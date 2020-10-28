@@ -1,3 +1,7 @@
+<?php
+require_once 'dbconnect.php';
+$GETid = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +27,10 @@
             /*align-items: center;*/
             gap: 2px;
             grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 8vh minmax(84vh,auto) 8vh;
+            grid-auto-rows: 8vh minmax(30vh,auto) minmax(54vh,auto) 8vh;
             grid-template-areas:
                 "header header header"
+                "side-l side-l side-l"
                 "content content content "
                 "footer footer footer";
         }
@@ -68,7 +73,6 @@
         .side-l{
             grid-area: side-l;
             background: #fff;
-            display: none;
         }
         .side-r{
             grid-area: side-r;
@@ -104,10 +108,60 @@
             <div class="menu"><a href="">menu</a></div>
             <div class="login"><a href="">login</a></div>
         </header>
-        <div class="side-l"></div>
-        <div class="content"></div>
+        <div class="side-l">
+            <h1 style="margin-left: 10px;"><a href="study.php">WEB</a></h1>
+            <ol>
+                <?php
+                $sql = "SELECT * FROM topic";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_array($result)){
+                    echo "<li><a href=\"design.php?id=".$row[id]."\">".$row[title]."</a></li>";
+                }
+                ?>
+            </ol>
+            <a style="margin-left: 10px;" href="write.php">write</a>
+            <?php
+            if($GETid){
+                ?>
+                <a href="upload.php?id=<?=$GETid?>">update</a>
+                <form style="margin-left: 10px;margin-top: 10px;" action="deleteProcess.php" method="post">
+                    <input type="hidden" name="id" value="<?=$GETid?>">
+                    <input type="submit" value="delete" onclick="button_event()">
+                </form>
+                <?php
+            }
+            ?>
+        </div>
+        <div class="content">
+            <?php
+            if($GETid){
+                $sql2 ="SELECT * FROM `topic` WHERE `id` = '".$GETid."'";
+                $result2 = mysqli_query($conn, $sql2);
+                while($row2 = mysqli_fetch_array($result2)){
+                    ?>
+                    <h2 style="margin-left: 10px;"><?= $row2[title];?></h2>
+                    <p style="margin-left: 10px;"><?= $row2[description];?></p>
+                    <?php
+                }
+            }else{
+                ?>
+                <h2>HELLO</h2>
+                <p>WELCOME TO MY WEBSITE</p>
+                <?php
+            }
+            ?>
+        </div>
         <div class="side-r"></div>
         <footer><div class="footer-name">footer</div></footer>
     </div>
+<script>
+    function button_event() {
+        if(confirm("정말 삭제하시겠습니까??") == true){
+            document.form.submit();
+        }else{
+            location.href = "design.php?id="<?=$GETid?>;
+        }
+    };
+</script>
 </body>
 </html>
