@@ -31,15 +31,10 @@ while($row = mysqli_fetch_array($result)){
 ?>
 </ol>
 <a href="write.php">write</a>
-<p>
-    <?php
-    $GETid = $_GET['id'];
-    $sql2 ="SELECT * FROM `topic` WHERE `title` = '".$GETid."'";
-    $result2 = mysqli_query($conn, $sql2);
-    while($row2 = mysqli_fetch_array($result2)){
-        echo $row2[description];
-    }
-    ?>
-</p>
+<form action="write_process.php" method="post">
+    <p><input type="text" name="title"/></p>
+    <p><textarea name="description"></textarea></p>
+    <p><input type="submit"></p>
+</form>
 </body>
 </html>
