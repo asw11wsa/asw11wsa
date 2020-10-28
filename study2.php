@@ -21,12 +21,24 @@ require_once 'dbconnect.php';
 
 <body>
 <h1><a href="study.php">WEB</a></h1>
+<ol>
 <?php
-$sql = "SELECT title FROM topic";
+$sql = "SELECT * FROM topic";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)){
-    echo $row[title];
+    echo "<li><a href=\"study2.php?id=".$row[title]."\">".$row[title]."</a></li>";
 }
 ?>
+</ol>
+<p>
+    <?php
+    $GETid = $_GET['id'];
+    $sql2 ="SELECT * FROM `topic` WHERE `title` = '".$GETid."'";
+    $result2 = mysqli_query($conn, $sql2);
+    while($row2 = mysqli_fetch_array($result2)){
+        echo $row2[description];
+    }
+    ?>
+</p>
 </body>
 </html>
