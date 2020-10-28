@@ -1,0 +1,14 @@
+.main_picture_sc {position: relative; width: 100%;height: 211px; background-image: url('/images/bn/bn_estimate.jpg');}
+.main_picture_sc div {border-radius: 10px;}
+.main_picture_sc > div:nth-child(1){position: absolute;top: 80px;right: 350px;width: 90px;height: 50px;border: 1px solid #fff;z-index: 10; background-color: rgba(0,0,0,0.3);}
+.main_picture_sc > div:nth-child(1):hover {background-color: rgba(0,0,0,0.45);}
+.main_picture_sc div p{text-align: center;color: #fff;}
+.main_picture_sc > div:nth-child(1) p:nth-child(1){position: absolute;left: 15px; top: 10px; font-size: 15px;}
+.main_picture_sc > div:nth-child(1) p:nth-child(2){position: absolute;left: 45px; top: 15px; font-size: 14px;}
+.main_picture_sc > div:nth-child(2){position: absolute;top: 80px;right: 450px;width: 90px;height: 50px;border: 1px solid #fff;z-index: 10; background-color: rgba(0,0,0,0.3);}
+.main_picture_sc > div:nth-child(2):hover {background-color: rgba(0,0,0,0.45);}
+.main_picture_sc > div:nth-child(2) p:nth-child(1){position: absolute;left: 10px; top: 10px; font-size: 15px;}
+.main_picture_sc > div:nth-child(2) p:nth-child(2){position: absolute;left: 40px; top: 15px; font-size: 14px;}
+.main_picture_sc > div:nth-child(3){position: absolute;top: 70px;left: 700px;width: 500px;height: 70px; text-align: center;}
+.main_picture_sc > div:nth-child(3) > h2{color: #fff; font-size: 30px;}
+.main_picture_sc > div:nth-child(3) > p {font-size: 20px; font-weight: lighter;}

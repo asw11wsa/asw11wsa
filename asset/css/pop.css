@@ -1,0 +1,591 @@
+@charset "UTF-8";
+	ul.popup_list {padding:100px 50px 50px 50px}
+	ul.popup_list li {font-size: 17px; padding-bottom:10px}
+	a {text-decoration:none}
+
+	#mask {display: none; position: fixed; top: 0 ;left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 103}
+	.PopMask.is-visible {display: block;}
+	.PopMask .close {position: absolute; top: -43px; right: -3px; width: 40px; height: 40px; background: #00b8f1 url(/asset/images/common/pop_close01.jpg) no-repeat center center; cursor: pointer}
+	.cd-panel {position: fixed; top: 80px; left: 15px; 100%; margin: 0 auto;height: auto; display: none}
+	.cd-panel.is-visible {visibility: visible; display: block}
+	.cd-panel-r {height: auto; display: none; z-index:104; }
+	.cd-panel-l {height: auto; visibility: hidden; z-index:104;}
+
+	.cd-panel-header-r {width: 100%;  height: 80px;background: #00b8f1; position: relative}
+	.cd-panel-header-r h1 {color: #fff; font-weight: 500; font-size:18px; text-align: center; padding: 30px 15px 0 15px; box-sizing: border-box; line-height: 1.3;}
+	.from-right .cd-panel-header-r {}
+	.from-left .cd-panel-header-r {}
+	.cd-panel-close {position: absolute; top: 3px; right: 3px; width: 30px; height: 30px; background: url(/asset/images/common/pop_close.png) no-repeat center center; cursor: pointer}
+
+	.cd-panel-container {width: calc(100% - 30px); margin-top: 100px; margin-left: 15px; margin-bottom: 80px}
+	.cd-panel-content {border: 3px solid #00b8f1; height: calc(100% - 126px);background: #fff; -webkit-overflow-scrolling: touch;}
+	.cd-panel-content .tour_pop_info >div {padding: 15px}
+	.cd-panel-content .tour_pop_info .top {border-bottom: 1px solid #dbdbdb}
+	.cd-panel-content .tour_pop_info .top:after {content: ''; display: block; clear: both}
+	.cd-panel-content .tour_pop_info .top > div {float: left}
+	.cd-panel-content .tour_pop_info .top .img {width: 124px; height: 101px; margin-right: 13px}
+	.cd-panel-content .tour_pop_info .top .img img {width: 100%}
+	.cd-panel-content .tour_pop_info .top .txt {width: calc(100% - 140px)}
+	.cd-panel-content .tour_pop_info .top .txt .tit {font-size: 16px; line-height: 1.2; padding-bottom: 3px}
+	.cd-panel-content .tour_pop_info .top .txt .subtit {margin-bottom: 10px; font-size: 13px; font-weight: 300; line-height: 1.2}
+	.cd-panel-content .tour_pop_info .top .txt .nation, .cd-panel-content .tour_pop_info .top .txt .popular {display: inline-block}
+	.cd-panel-content .tour_pop_info .top .txt .nation {margin-right: 22px; font-size: 13px; font-weight: 300;}
+	.cd-panel-content .tour_pop_info .top .txt .popular {padding-left: 15px; background: url(/asset/images/common/icon_f.png) no-repeat 0 center; background-size: 13px; font-size: 13px; font-weight: 300;}
+	.cd-panel-content .tour_pop_info .middle {}
+	.cd-panel-content .tour_pop_info .middle ul {padding: 20px 0 20px 10px; background: #f3f3f3}
+	.cd-panel-content .tour_pop_info .middle ul:after {content: ''; display: block; clear: both}
+	.cd-panel-content .tour_pop_info .middle ul li {float: left; width: 33%; margin-bottom: 11px}
+	.cd-panel-content .tour_pop_info .middle ul li:nth-child(5), .cd-panel-content .tour_pop_info .middle ul li:nth-child(6) {margin-bottom: 0}
+	.cd-panel-content .tour_pop_info .middle ul li span {display: inline-block; font-size: 13px; font-weight: 300}
+	.cd-panel-content .tour_pop_info .middle ul li span:nth-child(1) {padding-right: 7px; font-weight: 500}
+	.cd-panel-content .tour_pop_info .middle ul li span:nth-child(1):before {content: '·';}
+	.cd-panel-content .tour_pop_info .middle ul li .more {display: inline-block; width: 70px; height: 22px; font-size: 12px; font-weight: 300; color: #fff; background: #5e5e5e;line-height: 22px; text-align: center}
+	.cd-panel-content .tour_pop_info .bottom {font-size: 13px; font-weight: 300}
+	
+	/* 여행지검색 */
+	.PopTourPlace_cont {position: relative; top: 123px; margin: 0 15px 70px; background: #fff; border: 3px solid #00b8f1; z-index: 80}
+	.PopTourPlace_cont .tourPlaceInner {}
+	.PopTourPlace_cont .tourPlace_cont {padding: 15px 15px 47px }
+	.PopTourPlace_cont .maintit {border-bottom: 1px solid #dbdbdb}
+	.PopTourPlace_cont .maintit h1 {padding: 19px 0 19px 0; font-size: 20px; font-weight: 500; text-align: center}
+	.PopTourPlace_cont .tab_btn {display: block; width: 100%; border: 1px solid #dbdbdb}
+	.PopTourPlace_cont .tab_btn:after {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_btn li {float: left; width: 20%}
+	.PopTourPlace_cont .tab_btn li a {display: block; width: 100%; height: 47px; border-right: 1px solid #dbdbdb; font-weight: 400; line-height: 47px; text-align: center; font-size: 13px}
+	.PopTourPlace_cont .tab_btn li:last-child a {border-right: 0}
+	.PopTourPlace_cont .tab_btn li a.on, .PopTourPlace_cont .tab_btn li a:hover {background: #00b8f1; color: #fff}
+	.PopTourPlace_cont .searchbox {margin-top: 16px; margin-bottom: 33px; font-size: 0}
+	.PopTourPlace_cont .searchbox p {display: inline-block; vertical-align: middle}
+	.PopTourPlace_cont .searchbox .nation {width: 80px; height: 32px; margin-right: 5px; background: #2056af; font-size: 13px; color: #fff; text-align: center; line-height: 32px}
+	.PopTourPlace_cont .searchbox .select select{width: 60px; height: 32px; border: 1px solid #c7c7c7; font-size: 13px; letter-spacing: -0.03em; padding-left: 5px}
+	.PopTourPlace_cont .searchbox .input {width: calc(100% - 177px)}
+	.PopTourPlace_cont .searchbox .input input {width: 100%; height: 32px; padding-left: 7px; font-size: 16px; border-top: 1px solid #c7c7c7; border-bottom: 1px solid #c7c7c7; border-left: 0; border-right: 0}
+	.PopTourPlace_cont .searchbox .btn button {width: 32px; height: 32px; background: #666666 url(/asset/images/common/ico_search01.jpg) no-repeat center center; background-size: 12px}
+	.PopTourPlace_cont .tab_cont_wrap {border-top: 3px solid #00b8f1}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList {position: relative; padding: 19px 0; border-bottom: 1px solid #dbdbdb; cursor: pointer}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList:after {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .img {float: left; width: 90px; height: 85px; margin-right: 5px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .img img {width: 100%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt {float: left; width: calc(100% - 127px)}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .nation {display: inline-block; vertical-align: top; height: 28px; margin-top: 0px; margin-bottom: 3px; width: 60px; text-align: center; font-size: 13px; background: #2056af; color: #fff; font-weight: 300; line-height: 28px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .tit {display: block;  padding-bottom: 3px; font-size: 14px; font-weight: 400; line-height: 1.2}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .subtit {padding-bottom: 0; margin-bottom: -2px; font-size: 13px; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .popular, .PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .post,.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .writter {display: inline-block; font-size: 15px; font-weight: 300} 
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .popular {padding-left: 13px; margin-right: 10px;  background: url(/asset/images/common/icon_f.png) no-repeat 0 center; background-size: 11px; font-size: 12px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .post {padding-left: 13px; margin-right: 10px;  background: url(/asset/images/common/ico_post.jpg) no-repeat 0 center; background-size: 12px; font-size: 12px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .writter {font-size: 12px;}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"] {display: none}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"] + label {position:absolute; top: 45%; right: 10px; display: block; width: 18px; height: 18px; background: url(/asset/images/common/check_off.jpg) no-repeat center center; background-size: 18px; cursor: pointer}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"]:checked + label {background: url(/asset/images/common/check_on.jpg) no-repeat center center; background-size: 18px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .paging {padding-top: 28px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more {display: none}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more:before {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon {overflow: hidden; padding-top: 13px; padding-bottom: 13px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li {float: left}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li img {width: 24px; height: 24px;vertical-align: middle}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li span {display: inline-block; padding-left: 5px; padding-right: 7px; font-size: 13px; font-weight: 300; vertical-align: middle}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info {overflow: hidden; padding: 18px 10px 15px 15px; margin-bottom: 32px; background: #f3f3f3}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li {float: left; width: 50%; padding-bottom: 7px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(1), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(4) {width: 50%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(2), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(5) {width: 50%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(3), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(6) {width: 50%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span {display: inline-block; font-size: 13px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(1) {padding-right: 4px; font-weight: 400}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(1):before {content: '·'}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(2) {font-weight: 100; color: #5e5e5e;}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li .more {display: inline-block; width: 70px; height: 19px; margin-left: 3px; font-size: 12px; font-weight: 100; color: #fff; background: #5e5e5e;line-height: 19px; text-align: center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li .imore {display: inline-block; width: 70px; height: 19px; margin-left: 3px; font-size: 12px; font-weight: 100; color: #fff; background: #5e5e5e;line-height: 19px; text-align: center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .main_info {padding-top: 16px; border-top: 1px solid #dbdbdb; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment p {font-size: 13px; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit {background: #77bc58 url(/asset/images/common/comment.png) no-repeat 12px center; background-size: 14px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span {display: block; color: #fff}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.tit {padding-left: 35px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.writter, .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.date {float: right}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.date {padding-left: 8px; padding-right: 27px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_cont {padding: 10px 15px; border-bottom: 1px solid #f3f3f3}
+	.PopTourPlace_cont .btn_choice {display: block; width: 120px; height: 44px; margin: 41px auto 0; background: #00b8f1; line-height: 44px; font-weight: 400; color: #fff; text-align: center}
+	.PopTourPlace_cont .paging {padding-bottom: 0}
+
+	.PopComment .cd-panel-header-r {background: #f6b833}
+	.PopComment .cd-panel-content { height: auto; border: 3px solid #f6b833}
+	.PopComment .cd-panel-content .top {overflow: hidden; padding: 19px 16px 30px 16px}
+	.PopComment .cd-panel-content .top textarea {float: left; width: calc(100% - 80px); height: 80px; padding: 10px; border: 1px solid #c7c7c7; resize: none;}
+	.PopComment .cd-panel-content .top .btn_write {float: left; width: 80px; height: 80px; background: #666; font-size: 14px; color: #fff; text-align: center; line-height: 80px;}
+	.PopComment .cd-panel-content .bottom {}
+	.PopComment .cd-panel-content .bottom .num {padding-bottom:7px; padding-left: 15px; font-size: 14px; font-weight: 400}
+	.PopComment .cd-panel-content .bottom .num:after {position: relative; top: -2px; left: 8px; display: inline-block; content: ''; width: 0; height: 0; border-top: 5px solid #000; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 0}
+	.PopComment .cd-panel-content .bottom .list {border-top: 1px solid #666}
+	.PopComment .cd-panel-content .bottom .list li {overflow: hidden; padding: 8px 0; margin: 0 15px; background: url(/asset/images/common/dot_line.png) repeat-x 0 bottom}
+	.PopComment .cd-panel-content .bottom .list li:last-child {background: none}
+	.PopComment .cd-panel-content .bottom .list li span {display: block; font-size: 13px; font-weight: 100; color: #666; vertical-align: middle}
+	.PopComment .cd-panel-content .bottom .list li span.name {width: 100%; font-weight: 300; color: #000}
+	.PopComment .cd-panel-content .bottom .list li span.txt {width: 100%}
+	.PopComment .cd-panel-content .bottom .list li span.date {float: right; font-size: 12px; font-weight: 100; letter-spacing: 0}
+
+	.PopPlace .cd-panel-content {position: relative; height: 340px}
+	.PopPlace .cd-panel-content img {width: 28px}
+	.PopPlace .cd-panel-content .tip {padding: 7px 10px; min-width: 80px; max-width: 270px; font-size: 14px; font-weight: 300; border-radius: 4px;  text-align: center; line-height: 1.2}
+	.PopPlace .cd-panel-content .tip:before {content: ''; position: absolute; bottom: -26px; left: 50%; margin-left:  -12px; width: 24px; height: 26px; background: url(/asset/images/common/bg_tip.png) no-repeat center 0; background-size: 24px}
+
+	.PopMask {  position: fixed; top: 0; right: 0; bottom: 0; left: 0; visibility: hidden; z-index: 104; overflow-y: auto; -webkit-overflow-scrolling: touch; outline: 0;}
+	/* 다른쪽에 영향이 있는 지 확인 */
+	.PopMask.is-visible {visibility: visible;z-index: 999981;}
+
+	/* 새일정만들기 */
+	.PopNewPlan_cont {position: relative; top: 123px; left: auto; width: auto; margin: 0 15px 40px; height: auto; padding-bottom: 29px; background: #fff; border: 3px solid #00b8f1}
+	.PopNewPlan_cont h1 {height: 70px; border-bottom: 1px solid #dbdbdb; font-weight: 500; font-size: 20px; text-align: center; line-height: 70px;}
+	.PopNewPlan_cont label {width: 75px; margin-left: 15px;font-size: 15px; font-weight: 400;}
+	.PopNewPlan_cont input[type="text"], .PopNewPlan_cont select {padding-left: 10px; font-size: 14px; color: #444444; font-weight: 300}
+	.PopNewPlan_cont select {padding-left: 5px}
+	.PopNewPlan_cont input[type="text"]:focus, .PopNewPlan_cont select:focus {outline: none}
+	.PopNewPlan_cont input[type="text"] {height: 35px; border: 1px solid #dbdbdb}
+	.PopNewPlan_cont > div {padding: 26px 0 26px 0px}
+	.PopNewPlan_cont .tit, .PopNewPlan_cont .date {border-bottom: 1px solid #dbdbdb}
+	.PopNewPlan_cont .tit input {width: calc(100% - 110px)}
+	.PopNewPlan_cont .date:after {content: ''; display: block; clear: both}
+	.PopNewPlan_cont .date p {float: left; width: 100%}
+	.PopNewPlan_cont .date p.depart {margin-bottom: 15px;}
+	.PopNewPlan_cont .date p.depart:after {display: none}
+	.PopNewPlan_cont .date input {width: calc(100% - 110px); background: url(/asset/images/common/ico_cal02.jpg) no-repeat 94% center; background-size: 20px}
+	.PopNewPlan_cont .choice {text-align: center}
+	.PopNewPlan_cont .choice select {display: inline-block; width: 29%; height: 35px; border: 1px solid #dbdbdb}
+	.PopNewPlan_cont .choice select.nation {width: 29%}
+	.PopNewPlan_cont .choice .bar {display: inline-block; width: 4px; height: 1px; margin-left: 2px; margin-right: 2px; background: #000; vertical-align: middle}
+	.PopNewPlan_cont .btn_next {display: block; width: 150px; height: 40px; background: #00b8f1; margin: 0 auto; font-size: 16px; font-weight: 400; color: #fff; line-height: 40px; text-align: center}
+   	.PopNewPlan_cont .choice input.su-display {width: 100px}
+	.PopNewPlan_cont  .su-box {width: 178px;margin:-27px 1% 0 0px;}
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1219px){
+	.PopMask {  position: fixed; top: 0; right: auto; left: auto; bottom: auto;  visibility: hidden; z-index: 104; overflow-y: auto; -webkit-overflow-scrolling: touch; outline: 0;}
+	#mask {display: none; position: fixed; top: 0 ;left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 103}
+	.PopMask.is-visible {visibility: visible;z-index:99999999;}
+	.PopMask .close {position: absolute; top: -43px; right: -3px; width: 40px; height: 40px; background: #00b8f1 url(/asset/images/common/pop_close01.jpg) no-repeat center center; cursor: pointer}
+	.cd-panel {display: block; position: fixed; top: 0; left: auto; width: 450px;  visibility: hidden;  -webkit-transition: visibility 0s 0.6s; -moz-transition: visibility 0s 0.6s; transition: visibility 0s 0.6s;}
+	.cd-panel.is-visible {visibility: visible; -webkit-transition: visibility 0s 0s; -moz-transition: visibility 0s 0s; transition: visibility 0s 0s; }
+	.cd-panel-r { right: -450px;  height: 100%; visibility: visible; z-index:103; -webkit-transition: visibility 0s 0.6s; -moz-transition: visibility 0s 0.6s; transition: visibility 0s 0.6s;}
+	.cd-panel-l { left: -450px; visibility: hidden; z-index:104; -webkit-transition: visibility 0s 0.6s; -moz-transition: visibility 0s 0.6s; transition: visibility 0s 0.6s;}
+	.cd-panel-r.is-visible {right: 0}
+	.cd-panel-l.is-visible {left: 0}
+
+	.cd-panel-header-r {width: 100%;  height: 100px;background: #00b8f1}
+	.cd-panel-header-r h1 {color: #fff; font-weight: 500; font-size:23px; text-align: center; padding-top: 37px; box-sizing: border-box}
+	.from-right .cd-panel-header-r {right: 0;}
+	.from-left .cd-panel-header-r {left: 0;}
+	.cd-panel-close {position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; background: url(/asset/images/common/pop_close.png) no-repeat center center; cursor: pointer}
+
+	.cd-panel-container {
+		margin-top: 0; margin-left: 0;
+	  position: fixed;
+	  width: 450px;
+	  height: 100%;
+	  top: 0;
+	  background: #fff;
+	  z-index: 9990;
+	  -webkit-transition-property: -webkit-transform;
+	  -moz-transition-property: -moz-transform;
+	  transition-property: transform;
+	  -webkit-transition-duration: 0.3s;
+	  -moz-transition-duration: 0.3s;
+	  transition-duration: 0.3s; 
+	  -webkit-transition-delay: 0.3s;
+	  -moz-transition-delay: 0.3s;
+	  transition-delay: 0.3s;
+	}
+	.from-right .cd-panel-container {
+	  right: 0;
+	  -webkit-transform: translate3d(100%, 0, 0);
+	  -moz-transform: translate3d(100%, 0, 0);
+	  -ms-transform: translate3d(100%, 0, 0);
+	  -o-transform: translate3d(100%, 0, 0);
+	  transform: translate3d(100%, 0, 0);
+	}
+	.from-left .cd-panel-container {
+	  left: 0;
+	  -webkit-transform: translate3d(-100%, 0, 0);
+	  -moz-transform: translate3d(-100%, 0, 0);
+	  -ms-transform: translate3d(-100%, 0, 0);
+	  -o-transform: translate3d(-100%, 0, 0);
+	  transform: translate3d(-100%, 0, 0);
+	}
+	.is-visible .cd-panel-container {
+	  -webkit-transform: translate3d(0, 0, 0);
+	  -moz-transform: translate3d(0, 0, 0);
+	  -ms-transform: translate3d(0, 0, 0);
+	  -o-transform: translate3d(0, 0, 0);
+	  transform: translate3d(0, 0, 0);
+	  -webkit-transition-delay: 0s;
+	  -moz-transition-delay: 0s;
+	  transition-delay: 0s;
+	}
+
+	.cd-panel-content {border: 3px solid #00b8f1; height: calc(100% - 104px);background: #fff; -webkit-overflow-scrolling: touch; overflow-y: scroll}
+	.cd-panel-content .tour_pop_info >div {padding: 15px}
+	.cd-panel-content .tour_pop_info .top {border-bottom: 1px solid #dbdbdb}
+	.cd-panel-content .tour_pop_info .top:after {content: ''; display: block; clear: both}
+	.cd-panel-content .tour_pop_info .top > div {float: left}
+	.cd-panel-content .tour_pop_info .top .img {width: 139px; height: 113px; margin-right: 13px}
+	.cd-panel-content .tour_pop_info .top .img img {width: 100%}
+	.cd-panel-content .tour_pop_info .top .txt {width: 242px}
+	.cd-panel-content .tour_pop_info .top .txt .tit {font-size: 18px; line-height: 1.3}
+	.cd-panel-content .tour_pop_info .top .txt .subtit {margin-bottom: 40px; font-size: 15px; font-weight: 300}
+	.cd-panel-content .tour_pop_info .top .txt .nation, .cd-panel-content .tour_pop_info .top .txt .popular {display: inline-block}
+	.cd-panel-content .tour_pop_info .top .txt .nation {margin-right: 22px; font-size: 15px; font-weight: 300;}
+	.cd-panel-content .tour_pop_info .top .txt .popular {padding-left: 20px; background: url(/asset/images/common/icon_f.png) no-repeat 0 center; background-size: 15px; font-size: 15px; font-weight: 300;}
+	.cd-panel-content .tour_pop_info .middle {}
+	.cd-panel-content .tour_pop_info .middle ul {padding: 30px 0 30px 20px; background: #f3f3f3}
+	.cd-panel-content .tour_pop_info .middle ul:after {content: ''; display: block; clear: both}
+	.cd-panel-content .tour_pop_info .middle ul li {float: left; width: 50%; margin-bottom: 11px}
+	.cd-panel-content .tour_pop_info .middle ul li:nth-child(5), .cd-panel-content .tour_pop_info .middle ul li:nth-child(6) {margin-bottom: 0}
+	.cd-panel-content .tour_pop_info .middle ul li span {display: inline-block; font-size: 15px; font-weight: 300}
+	.cd-panel-content .tour_pop_info .middle ul li span:nth-child(1) {padding-right: 7px; font-weight: 500}
+	.cd-panel-content .tour_pop_info .middle ul li span:nth-child(1):before {content: '·';}
+	.cd-panel-content .tour_pop_info .middle ul li .more {display: inline-block; width: 89px; height: 24px; font-size: 14px; font-weight: 300; color: #fff; background: #5e5e5e;line-height: 23px; text-align: center}
+	.cd-panel-content .tour_pop_info .middle ul li .imore {display: inline-block; width: 89px; height: 24px; font-size: 14px; font-weight: 300; color: #fff; background: #5e5e5e;line-height: 23px; text-align: center}
+	.cd-panel-content .tour_pop_info .bottom {font-weight: 300; font-size: 15px}
+
+	/* 여행지검색 */
+	.PopTourPlace.PopMask {left: 0; right: 0; bottom: 0}
+	.PopTourPlace_cont {position: relative; top: 123px; left: auto; height: auto; margin: 0 80px 100px; width: auto; background: #fff; border: 3px solid #00b8f1; z-index: 80}
+	.PopTourPlace_cont .tourPlaceInner {}
+	.PopTourPlace_cont .tourPlace_cont {padding: 23px 30px 47px }
+	.PopTourPlace_cont .maintit h1 {padding: 29px 0 35px 0; font-size: 25px; font-weight: 500; text-align: center}
+	.PopTourPlace_cont .tab_btn li {float: left; width: 20%}
+	.PopTourPlace_cont .tab_btn li a { height: 47px; border-right: 1px solid #dbdbdb; font-weight: 400; line-height: 47px; text-align: center; font-size: 16px}
+	.PopTourPlace_cont .tab_btn li:last-child a {border-right: 0}
+	.PopTourPlace_cont .tab_btn li a.on {background: #00b8f1; color: #fff}
+	.PopTourPlace_cont .searchbox {margin-top: 24px; margin-bottom: 45px; font-size: 0}
+	.PopTourPlace_cont .searchbox p {display: inline-block; vertical-align: middle}
+	.PopTourPlace_cont .searchbox .nation {width: 110px; height: 32px; margin-right: 10px; background: #2056af; font-size: 17px; color: #fff; text-align: center; line-height: 32px}
+	.PopTourPlace_cont .searchbox .select select{width: 90px; height: 32px; border: 1px solid #c7c7c7; font-size: 16px; letter-spacing: -0.03em; padding-left: 10px}
+	.PopTourPlace_cont .searchbox .input {width: calc(100% - 242px)}
+	.PopTourPlace_cont .searchbox .input input {width: 100%; height: 32px; padding-left: 15px; font-size: 16px; border-top: 1px solid #c7c7c7; border-bottom: 1px solid #c7c7c7; border-left: 0; border-right: 0}
+	.PopTourPlace_cont .searchbox .btn button {width: 32px; height: 32px; background: #666666 url(/asset/images/common/ico_search01.jpg) no-repeat center center}
+	.PopTourPlace_cont .tab_cont_wrap {border-top: 3px solid #00b8f1}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList {position: relative; padding: 19px 0}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList:after {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .img {float: left; width: 149px; height: 140px; margin-right: 24px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .img img {width: 100%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt {float: left; width: calc(100% - 223px)}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .nation {display: inline-block; width: auto; height: 32px; font-size: 15px; margin-top: 4px; margin-bottom: 3px;  padding: 0 14px 4px; background: #2056af; color: #fff; font-weight: 300; line-height: 32px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .tit {display: block; font-size: 18px; padding-bottom: 3px;  font-weight: 400}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .subtit {padding-bottom: 21px; font-size: 15px; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .popular, .PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .post,.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .writter {display: inline-block; font-size: 15px; font-weight: 300} 
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .popular {padding-left: 20px; margin-right: 19px;  background: url(/asset/images/common/icon_f.png) no-repeat 0 center; background-size: 15px; font-size: 15px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .post {padding-left: 20px; margin-right: 19px;  background: url(/asset/images/common/ico_post.jpg) no-repeat 0 center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .writter {font-size: 14px;}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"] {display: none}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"] + label {position:absolute; top: 83px; right: 24px; display: block; width: 26px; height: 26px; background: url(/asset/images/common/check_off.jpg) no-repeat center center; cursor: pointer}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"]:checked + label {background: url(/asset/images/common/check_on.jpg) no-repeat center center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .paging {padding-top: 60px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more {display: none}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more:before {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon {overflow: hidden; padding-top: 30px; padding-bottom: 13px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li {float: left}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li img {vertical-align: middle}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li span {display: inline-block; padding-left: 5px; padding-right: 7px; font-size: 15px; font-weight: 300; vertical-align: middle}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info {overflow: hidden; padding: 18px 0 15px 25px; margin-bottom: 32px; background: #f3f3f3}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li {float: left; width: 33.3%; padding-bottom: 13px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(1), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(4) {width: 33.3%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(2), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(5) {width: 33.3%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(3), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(6) {width: 33.3%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span {display: inline-block; font-size: 14px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(1) {padding-right: 4px; font-weight: 400}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(1):before {content: '·'}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(2) {font-weight: 100; color: #5e5e5e;}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li .more {display: inline-block; width: 72px; height: 22px; margin-left: 8px; font-size: 13px; font-weight: 100; color: #fff; background: #5e5e5e;line-height: 22px; text-align: center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .main_info {padding-top: 16px; border-top: 1px solid #dbdbdb; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment p {font-size: 15px; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit {height: auto; padding: 10px 0; line-height: 1.4; background: #77bc58 url(/asset/images/common/comment.png) no-repeat 12px center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span {display: inline-block; color: #fff}
+	.PopTourPlace_cont .btn_choice {display: block; width: 140px; height: 46px; margin: 41px auto 0; background: #00b8f1; line-height: 46px; font-weight: 400; color: #fff; text-align: center}
+	.PopTourPlace_cont .paging {padding-bottom: 0}
+
+	.PopComment.cd-panel {width: 450px}
+	.PopComment .cd-panel-container {width: 450px}
+	.PopComment .cd-panel-header-r {background: #f6b833}
+	.PopComment .cd-panel-content {height: 540px; border: 3px solid #f6b833}
+	.PopComment .cd-panel-content .top {overflow: hidden; padding: 19px 16px 30px 16px}
+	.PopComment .cd-panel-content .top textarea {float: left; width: calc(100% - 110px); height: 100px; padding: 10px; border: 1px solid #c7c7c7; resize: none;}
+	.PopComment .cd-panel-content .top .btn_write {float: left; width: 110px; height: 100px; background: #666; font-size: 16px; color: #fff; text-align: center; line-height: 100px;}
+	.btn_write { cursor:pointer; }
+	.PopComment .cd-panel-content .bottom {}
+	.PopComment .cd-panel-content .bottom .num {padding-bottom:7px; padding-left: 15px; font-size: 14px; font-weight: 400}
+	.PopComment .cd-panel-content .bottom .num:after {position: relative; top: -2px; left: 8px; display: inline-block; content: ''; width: 0; height: 0; border-top: 5px solid #000; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 0}
+	.PopComment .cd-panel-content .bottom .list {border-top: 1px solid #666}
+	.PopComment .cd-panel-content .bottom .list li {overflow: hidden; padding: 10px 0; margin: 0 15px; background: url(/asset/images/common/dot_line.png) repeat-x 0 bottom}
+	.PopComment .cd-panel-content .bottom .list li span {float: none; display: block; font-size: 14px; font-weight: 100; color: #666; vertical-align: middle}
+	.PopComment .cd-panel-content .bottom .list li span.name {width: 100% font-weight: 300; color: #000}
+	.PopComment .cd-panel-content .bottom .list li span.txt {width: 100%}
+	.PopComment .cd-panel-content .bottom .list li a.del { display:inline-block;border:1px solid #ddd;padding:3px 10px;background-color:#ffffff;cursor:pointer;font-weight:bold;}
+	.PopComment .cd-panel-content .bottom .list li span.date {float: right; font-size: 12px; font-weight: 100; letter-spacing: 0}
+
+	.PopPlace .cd-panel-content {position: relative; height: 450px; overflow-y: hidden}
+	.PopPlace .cd-panel-content img {width: 35px}
+	.PopPlace .cd-panel-content .tip {padding: 7px 10px; min-width: 100px; max-width: 290px; font-size: 14px; font-weight: 300; border-radius: 4px; border: 1px solid #e6e6e6; text-align: center; line-height: 1.2}
+	.PopPlace .cd-panel-content .tip:before {content: ''; position: absolute; bottom: -26px; left: 50%; margin-left:  -12px; width: 24px; height: 26px; background: url(/asset/images/common/bg_tip.png) no-repeat center 0; background-size: 24px}
+
+
+	/* 새일정만들기 */
+	.PopNewPlan.PopMask {left: 0; right: 0; bottom: 0}
+	.PopNewPlan_cont {position: relative; top: 123px; left: auto; width: auto; margin: 0 80px; height: auto; padding-bottom: 29px; background: #fff; border: 3px solid #00b8f1}
+	.PopNewPlan_cont h1 {height: 90px; border-bottom: 1px solid #dbdbdb; font-weight: 500; font-size: 22px; text-align: center; line-height: 90px;}
+	.PopNewPlan_cont label {width: 75px; margin-left: 15px;font-size: 17px; font-weight: 400;}
+	.PopNewPlan_cont input[type="text"], .PopNewPlan_cont select {padding-left: 15px; font-size: 16px; color: #444444; font-weight: 300}
+	.PopNewPlan_cont select {padding-left: 15 px}
+	.PopNewPlan_cont input[type="text"]:focus, .PopNewPlan_cont select:focus {outline: none}
+	.PopNewPlan_cont input[type="text"] {height: 44px; border: 1px solid #dbdbdb}
+	.PopNewPlan_cont > div {padding: 26px 40px 26px 40px}
+	.PopNewPlan_cont .tit, .PopNewPlan_cont .date {border-bottom: 1px solid #dbdbdb}
+	.PopNewPlan_cont .tit input {width: calc(100% - 119px)}
+	.PopNewPlan_cont .date:after {content: ''; display: block; clear: both}
+	.PopNewPlan_cont .date p {float: left; width: calc(50% - 0px)}
+	.PopNewPlan_cont .date p.arrival {width: 50%; float: right}
+	.PopNewPlan_cont .date p.depart {margin-bottom: 15px;}
+	.PopNewPlan_cont .date p.depart:after {content: ''; display: inline-block; width: 6px; height: 2px; margin-left: 15px; margin-right: 3px; background: #000; vertical-align: middle} 
+	.PopNewPlan_cont .date input {width: calc(100% - 120px); background: url(/asset/images/common/ico_cal02.jpg) no-repeat 94% center; background-size: 20px}
+	.PopNewPlan_cont .choice {text-align: center}
+	.PopNewPlan_cont .choice select {display: inline-block; width: 27%; height: 44px; border: 1px solid #dbdbdb}
+	.PopNewPlan_cont .choice select.nation {width: 29%}
+	.PopNewPlan_cont .choice .bar {display: inline-block; width: 6px; height: 2px; margin-left: 10px; margin-right: 10px; background: #000; vertical-align: middle}
+	.PopNewPlan_cont .btn_next {display: block; width: 190px; height: 47px; background: #00b8f1; margin: 0 auto; font-size: 17px; font-weight: 400; color: #fff; line-height: 47px; text-align: center}
+	.PopNewPlan_cont .choice input.su-display {width: 180px}
+	.PopNewPlan_cont  .su-box {width: 278px;margin:-27px 70px 0 0px;}
+
+}
+
+@media screen and (min-width: 1220px){
+	.PopMask {position: fixed; top: 0; left: auto; right: auto; bottom: auto; visibility: hidden; z-index: 104; overflow-y: auto; -webkit-overflow-scrolling: touch; outline: 0;}
+	#mask {display: none; position: fixed; top: 0 ;left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9103}
+	.PopMask.is-visible {visibility: visible; display: block;}
+	.PopMask .close {position: absolute; top: -3px; right: -45px; width: 45px; height: 45px; background: #00b8f1 url(/asset/images/common/pop_close01.jpg) no-repeat center center; cursor: pointer}
+	.cd-panel {display: block; position: fixed; top: 0; left: auto; left: auto; width: 510px; height: 100%; margin: 0; visibility: hidden;  -webkit-transition: visibility 0s 0.6s; -moz-transition: visibility 0s 0.6s; transition: visibility 0s 0.6s;}
+	.cd-panel.is-visible {visibility: visible; -webkit-transition: visibility 0s 0s; -moz-transition: visibility 0s 0s; transition: visibility 0s 0s; }
+	.cd-panel-r {display: block; right: -510px;  height: 100%; visibility: visible; z-index:101; -webkit-transition: visibility 0s 0.6s; -moz-transition: visibility 0s 0.6s; transition: visibility 0s 0.6s;}
+	.cd-panel-l { left: -600px; height: 100%; visibility: hidden; z-index:101; -webkit-transition: visibility 0s 0.6s; -moz-transition: visibility 0s 0.6s; transition: visibility 0s 0.6s;}
+
+	.cd-panel-header-r {width: 100%;  height: 126px;background: #00b8f1}
+	.cd-panel-header-r h1 {color: #fff; font-weight: 500; font-size:25px; text-align: center; padding-top: 45px; box-sizing: border-box}
+	.from-right .cd-panel-header-r {right: 0;}
+	.from-left .cd-panel-header-r {left: 0;}
+	.cd-panel-close {position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; background: url(/asset/images/common/pop_close.png) no-repeat center center; cursor: pointer}
+
+	.cd-panel-r.is-visible {right: 0;z-index:99999;}
+	.cd-panel-l.is-visible {left: 0}
+
+	.cd-panel-container {
+	margin-top: 0; margin-left: 0;
+	  position: fixed;
+	  height: 100%;
+	  width: 510px;
+	  top: 0;
+	  background: #fff;
+	  z-index: 9990;
+	  -webkit-transition-property: -webkit-transform;
+	  -moz-transition-property: -moz-transform;
+	  transition-property: transform;
+	  -webkit-transition-duration: 0.3s;
+	  -moz-transition-duration: 0.3s;
+	  transition-duration: 0.3s; 
+	  -webkit-transition-delay: 0.3s;
+	  -moz-transition-delay: 0.3s;
+	  transition-delay: 0.3s;
+	}
+	.from-right .cd-panel-container {
+	  right: 0px;
+	  -webkit-transform: translate3d(100%, 0, 0);
+	  -moz-transform: translate3d(100%, 0, 0);
+	  -ms-transform: translate3d(100%, 0, 0);
+	  -o-transform: translate3d(100%, 0, 0);
+	  transform: translate3d(100%, 0, 0);
+	}
+	.from-left .cd-panel-container {
+		height: auto;
+	  left: 0;
+	  -webkit-transform: translate3d(-100%, 0, 0);
+	  -moz-transform: translate3d(-100%, 0, 0);
+	  -ms-transform: translate3d(-100%, 0, 0);
+	  -o-transform: translate3d(-100%, 0, 0);
+	  transform: translate3d(-100%, 0, 0);
+	}
+	.is-visible .cd-panel-container {
+	  -webkit-transform: translate3d(0, 0, 0);
+	  -moz-transform: translate3d(0, 0, 0);
+	  -ms-transform: translate3d(0, 0, 0);
+	  -o-transform: translate3d(0, 0, 0);
+	  transform: translate3d(0, 0, 0);
+	  -webkit-transition-delay: 0s;
+	  -moz-transition-delay: 0s;
+	  transition-delay: 0s;
+	}
+
+	.cd-panel-content {border: 3px solid #00b8f1; height: calc(100% - 126px);background: #fff; -webkit-overflow-scrolling: touch;}
+	.cd-panel-content .tour_pop_info >div {padding: 15px}
+	.cd-panel-content .tour_pop_info .top {border-bottom: 1px solid #dbdbdb}
+	.cd-panel-content .tour_pop_info .top:after {content: ''; display: block; clear: both}
+	.cd-panel-content .tour_pop_info .top > div {float: left}
+	.cd-panel-content .tour_pop_info .top .img {width: 169px; height: 138px; margin-right: 13px}
+	.cd-panel-content .tour_pop_info .top .img img {width: 100%}
+	.cd-panel-content .tour_pop_info .top .txt {widtH: 286px}
+	.cd-panel-content .tour_pop_info .top .txt .tit {font-size: 20px}
+	.cd-panel-content .tour_pop_info .top .txt .subtit {margin-bottom: 40px; font-size: 15px; font-weight: 300}
+	.cd-panel-content .tour_pop_info .top .txt .nation, .cd-panel-content .tour_pop_info .top .txt .popular {display: inline-block}
+	.cd-panel-content .tour_pop_info .top .txt .nation {margin-right: 22px; font-size: 15px; font-weight: 300;}
+	.cd-panel-content .tour_pop_info .top .txt .popular {padding-left: 20px; background: url(/asset/images/common/icon_f.png) no-repeat 0 center; background-size: 15px; font-size: 15px; font-weight: 300;}
+	.cd-panel-content .tour_pop_info .middle {}
+	.cd-panel-content .tour_pop_info .middle ul {padding: 30px 0 30px 45px; background: #f3f3f3}
+	.cd-panel-content .tour_pop_info .middle ul:after {content: ''; display: block; clear: both}
+	.cd-panel-content .tour_pop_info .middle ul li {float: left; width: 50%; margin-bottom: 11px}
+	.cd-panel-content .tour_pop_info .middle ul li:nth-child(5), .cd-panel-content .tour_pop_info .middle ul li:nth-child(6) {margin-bottom: 0}
+	.cd-panel-content .tour_pop_info .middle ul li span {display: inline-block; font-size: 15px; font-weight: 300}
+	.cd-panel-content .tour_pop_info .middle ul li span:nth-child(1) {padding-right: 7px; font-weight: 500}
+	.cd-panel-content .tour_pop_info .middle ul li span:nth-child(1):before {content: '·';}
+	.cd-panel-content .tour_pop_info .middle ul li .more {display: inline-block; width: 89px; height: 24px; font-size: 14px; font-weight: 300; color: #fff; background: #5e5e5e;line-height: 23px; text-align: center}
+	.cd-panel-content .tour_pop_info .bottom img, .cd-panel-content .tour_pop_info .bottom iframe {width: 100%}
+	.cd-panel-content .tour_pop_info .bottom {font-size: 15px}
+
+	.PopTourPlace.PopMask {left: 0; right: 0; bottom: 0; z-index:21474836471;}
+	.PopTourPlace_cont {position: relative; top: 123px; left: 50%; height: auto; margin-left: -399px; margin-bottom: 123px; width: 798px; background: #fff; border: 3px solid #00b8f1; z-index:21474836471;}
+	.PopTourPlace_cont .tourPlaceInner {}
+	.PopTourPlace_cont .tourPlace_cont {padding: 23px 72px 47px }
+	.PopTourPlace_cont .maintit {border-bottom: 1px solid #dbdbdb}
+	.PopTourPlace_cont .maintit h1 {padding: 29px 0 35px 0; font-size: 25px; font-weight: 500; text-align: center}
+	.PopTourPlace_cont .tab_btn {width: 100%; border: 1px solid #dbdbdb}
+	.PopTourPlace_cont .tab_btn:after {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_btn li {float: left; width: 20%}
+	.PopTourPlace_cont .tab_btn li a {height: 47px; border-right: 1px solid #dbdbdb; font-weight: 400; line-height: 47px; text-align: center; font-size: 17px}
+	.PopTourPlace_cont .tab_btn li:last-child a {border-right: 0}
+	.PopTourPlace_cont .tab_btn li a.on {background: #00b8f1; color: #fff}
+	.PopTourPlace_cont .searchbox {margin-top: 24px; margin-bottom: 45px; font-size: 0}
+	.PopTourPlace_cont .searchbox p {display: inline-block; vertical-align: middle}
+	.PopTourPlace_cont .searchbox .nation {width: 129px; height: 32px; margin-right: 10px; background: #2056af; font-size: 17px; color: #fff; text-align: center; line-height: 32px}
+	.PopTourPlace_cont .searchbox .select select{width: 107px; height: 32px; border: 1px solid #c7c7c7; font-size: 16px; letter-spacing: -0.03em; padding-left: 11px}
+	.PopTourPlace_cont .searchbox .input {width: 376px}
+	.PopTourPlace_cont .searchbox .input input {width: 100%; height: 32px; padding-left: 15px; font-size: 16px; border-top: 1px solid #c7c7c7; border-bottom: 1px solid #c7c7c7; border-left: 0; border-right: 0}
+	.PopTourPlace_cont .searchbox .btn button {width: 32px; height: 32px; background: #666666 url(/asset/images/common/ico_search01.jpg) no-repeat center center; background-size: 16px}
+	.PopTourPlace_cont .tab_cont_wrap {border-top: 3px solid #00b8f1}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList {position: relative; padding: 19px 0; border-bottom: 1px solid #dbdbdb; cursor: pointer}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList:after {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .img {float: left; width: 169px; height: 158px; margin-right: 30px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .img img {width: 100%}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt {float: left; width: 404px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .nation {display: inline-block; width: auto; font-size: 16px;  height: 32px; margin-top: 9px; padding: 0 14px 4px; background: #2056af; color: #fff; font-weight: 300; line-height: 32px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .tit {display: block; width: auto; font-size: 17px; padding-bottom: 3px; font-size: 20px; font-weight: 400}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .subtit {padding-bottom: 21px; font-size: 15px; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .popular, .PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .post,.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .writter {display: inline-block; font-size: 15px; font-weight: 300} 
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .popular {padding-left: 20px; margin-right: 19px;  background: url(/asset/images/common/icon_f.png) no-repeat 0 center; background-size: 15px; font-size: 15px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .post {padding-left: 20px; margin-right: 19px;  background: url(/asset/images/common/ico_post.jpg) no-repeat 0 center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList .txt .writter {font-size: 14px;}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"] {display: none}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"] + label {position:absolute; top: 83px; right: 24px; display: block; width: 26px; height: 26px; background: url(/asset/images/common/check_off.jpg) no-repeat center center; cursor: pointer}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .tourPlaceList input[type="checkbox"]:checked + label {background: url(/asset/images/common/check_on.jpg) no-repeat center center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .paging {padding-top: 60px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more {display: none}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more:before {content: ''; display: block; clear: both}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon {overflow: hidden; padding-top: 30px; padding-bottom: 13px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li {float: left}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li img {vertical-align: middle}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .icon li span {display: inline-block; padding-left: 5px; padding-right: 7px; font-size: 15px; font-weight: 300; vertical-align: middle}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info {overflow: hidden; padding: 18px 0 15px 55px; margin-bottom: 32px; background: #f3f3f3}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li {float: left; width: 33.3%; padding-bottom: 13px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(1), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(4) {width: 200px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(2), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(5) {width: 170px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(3), .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li:nth-child(6) {width: 176px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span {display: inline-block; font-size: 15px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(1) {padding-right: 4px; font-weight: 400}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(1):before {content: '·'}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li span:nth-child(2) {font-weight: 100; color: #5e5e5e;}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .info li .more {display: inline-block; width: 89px; height: 24px; margin-left: 11px; font-size: 15px; font-weight: 100; color: #fff; background: #5e5e5e;line-height: 23px; text-align: center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .main_info {padding-top: 16px; border-top: 1px solid #dbdbdb; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment p {font-size: 15px; font-weight: 300}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit {height: 40px; line-height: 40px; background: #77bc58 url(/asset/images/common/comment.png) no-repeat 12px center}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span {display: inline-block; color: #fff}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.tit {padding-left: 35px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.writter, .PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.date {float: right}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_tit span.date {padding-left: 8px; padding-right: 27px}
+	.PopTourPlace_cont .tab_cont_wrap .tab_cont .more .comment .comment_cont {padding: 10px 15px; border-bottom: 1px solid #f3f3f3}
+	.PopTourPlace_cont .btn_choice {display: block; width: 148px; height: 49px; margin: 41px auto 0; background: #00b8f1; line-height: 49px; font-weight: 400; color: #fff; text-align: center}
+	.PopTourPlace_cont .paging {padding-bottom: 0}
+
+	.PopComment .cd-panel-container {width: 600px; height: auto}
+	.PopComment .cd-panel-header-r {background: #f6b833}
+	.PopComment .cd-panel-content { height: auto; border: 3px solid #f6b833}
+	.PopComment .cd-panel-content .top {overflow: hidden; padding: 19px 16px 30px 16px}
+	.PopComment .cd-panel-content .top textarea {float: left; width: 418px; height: 125px; padding: 10px; border: 1px solid #c7c7c7; resize: none;}
+	.PopComment .cd-panel-content .top .btn_write {float: left; width: 132px; height: 125px; background: #666; font-size: 17px; color: #fff; text-align: center; line-height: 125px;}
+	.PopComment .cd-panel-content .bottom {}
+	.PopComment .cd-panel-content .bottom .num {padding-bottom:7px; padding-left: 15px; font-size: 14px; font-weight: 400}
+	.PopComment .cd-panel-content .bottom .num:after {position: relative; top: -2px; left: 8px; display: inline-block; content: ''; width: 0; height: 0; border-top: 5px solid #000; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 0}
+	.PopComment .cd-panel-content .bottom .list {border-top: 1px solid #666}
+	.PopComment .cd-panel-content .bottom .list li {overflow: hidden; padding: 17px 0; margin: 0 15px; background: url(/asset/images/common/dot_line.png) repeat-x 0 bottom}
+	.PopComment .cd-panel-content .bottom .list li span {float: left; font-size: 14px; font-weight: 100; color: #666; vertical-align: middle}
+	.PopComment .cd-panel-content .bottom .list li span.name {width: 70px; font-weight: 300; color: #000}
+	.PopComment .cd-panel-content .bottom .list li span.txt {width: 408px}
+	.PopComment .cd-panel-content .bottom .list li span.date {float: right; font-size: 12px; font-weight: 100; letter-spacing: 0}
+
+	.PopPlace .cd-panel-content {position: relative;height: 700px}
+	.PopPlace .cd-panel-content .tip {padding: 7px 10px; min-width: 100px; max-width: 350px; font-size: 15px; font-weight: 300; border-radius: 4px; text-align: center; line-height: 1.2}
+	.PopPlace .cd-panel-content .tip:before {content: ''; position: absolute; bottom: -26px; left: 50%; margin-left:  -12px; width: 24px; height: 26px; background: url(/asset/images/common/bg_tip.png) no-repeat center 0; background-size: 24px}
+
+    
+
+	.new_plan {position: relative; width: 1075px; border: 3px solid #00b8ef}
+
+	/* 새일정만들기 */
+	.PopNewPlan.PopMask {left: 0; right: 0; bottom: 0; overflow-y: scroll; z-index: 9999;}
+	.PopNewPlan_cont {position: absolute; top: 123px; left: 50%; width: 1080px; height: auto; margin-left: -540px; padding-bottom: 29px; background: #fff; border: 3px solid #00b8f1}
+	.PopNewPlan_cont h1 {height: 101px; border-bottom: 1px solid #dbdbdb; font-weight: 500; font-size: 25px; text-align: center; line-height: 101px;}
+	.PopNewPlan_cont label {width: 125px; font-size: 22px; font-weight: 400;}
+	.PopNewPlan_cont input[type="text"], .PopNewPlan_cont select {padding-left: 27px; font-size: 17px; color: #444444; font-weight: 300}
+	.PopNewPlan_cont input[type="text"]:focus, .PopNewPlan_cont select:focus {outline: none}
+	.PopNewPlan_cont input[type="text"] {height: 48px; border: 1px solid #dbdbdb}
+	.PopNewPlan_cont > div {padding: 26px 0 26px 90px}
+	.PopNewPlan_cont .tit, .PopNewPlan_cont .date {border-bottom: 1px solid #dbdbdb}
+	.PopNewPlan_cont .tit input {width: 762px}
+	.PopNewPlan_cont .choice input.su-display {width: 300px}
+	.PopNewPlan_cont  .su-box {width: 278px;margin:-27px 75px 0 0px;}
+
+	.PopNewPlan_cont .date:after {content: ''; display: block; clear: both}
+	.PopNewPlan_cont .date p {float: left; width: auto}
+	.PopNewPlan_cont .date p.depart {margin-bottom: 0;}
+	.PopNewPlan_cont .date p.depart:after {content: ''; display: inline-block; width: 6px; height: 2px; margin-left: 28px; margin-right: 21px; background: #000; vertical-align: middle}
+	.PopNewPlan_cont .date input {width: 292px; background: url(/asset/images/common/ico_cal02.jpg) no-repeat 226px center}
+	.PopNewPlan_cont .choice {text-align: left}
+	.PopNewPlan_cont .choice select {width: 105px; height: 48px; border: 1px solid #dbdbdb}
+	.PopNewPlan_cont .choice select.nation {width: 339px}
+	.PopNewPlan_cont .choice .bar {display: inline-block; width: 6px; height: 2px; margin-left: 37px; margin-right: 37px; background: #000; vertical-align: middle}
+	.PopNewPlan_cont .btn_next {display: block; width: 190px; height: 69px; background: #00b8f1; margin: 0 auto; font-size: 22px; font-weight: 400; color: #fff; line-height: 69px; text-align: center}
+
+}
+
+@media screen and (max-width: 359px){
+	.cd-panel-header-r h1 {font-size: 16px}
+	.PopTourPlace_cont .tab_btn li a {display: block; height: 40px; line-height: 40px; text-align: center; font-size: 11px}
+
+}
+
+@media screen and (max-width: 540px){
+
+	.cd-panel-content .tour_pop_info .middle ul li {width: 50%}
+
+}
+
+@media screen and (max-width: 400px){
+
+	.cd-panel-content .tour_pop_info .middle ul li span{display: block}
+	.cd-panel-content .tour_pop_info .middle ul li span:nth-child(2) {padding-left: 4px}
+
+	.cd-panel-content .tour_pop_info .top .img {width: 105px; height: 85px; margin-right: 10px}
+	.cd-panel-content .tour_pop_info .top .img img {width: 100%}
+	.cd-panel-content .tour_pop_info .top .txt {width: calc(100% - 116px)}
+
+
+}
+
+
+
+
+
+
+
