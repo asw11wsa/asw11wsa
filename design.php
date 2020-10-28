@@ -19,23 +19,21 @@
         }
         .page{
             display: grid;
-            height: 100vh;
+            /*justify-content: center;*/
+            /*align-items: center;*/
             gap: 2px;
-            grid-template-columns: repeat(5, 1fr);
-            grid-auto-rows: minmax(100px,auto);
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 8vh minmax(84vh,auto) 8vh;
             grid-template-areas:
-                "header header header header header"
-                "side-l content content content side-r"
-                "side-l content content content side-r"
-                "side-l content content content side-r"
-                "side-l content content content side-r"
-                "side-l content content content side-r"
-                "side-l content content content side-r"
-                "footer footer footer footer footer";
+                "header header header"
+                "content content content "
+                "footer footer footer";
         }
         header{
             grid-area: header;
             background: #999;
+            position: sticky;
+            top: 0;
             display: flex;
             justify-content: center;
             text-align: center;
@@ -58,14 +56,44 @@
         footer{
             grid-area: footer;
             background: cadetblue;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+        .footer-name{
+            width: 100%;
+            text-align: center;
         }
         .side-l{
             grid-area: side-l;
             background: #fff;
+            display: none;
         }
         .side-r{
             grid-area: side-r;
             background: #fff;
+            display: none;
+        }
+        @media (min-width: 756px) {
+            .page{
+                display: grid;
+                /*justify-content: center;*/
+                /*align-items: center;*/
+                gap: 2px;
+                grid-template-columns: repeat(5, 1fr);
+                grid-auto-rows: 8vh minmax(84vh,auto) 8vh;
+                grid-template-areas:
+                    "header header header header header"
+                    "side-l content content content side-r"
+                    "footer footer footer footer footer";
+            }
+            .side-l{
+                display: block;
+            }
+            .side-r{
+                display: block;
+            }
         }
     </style>
 </head>
@@ -79,7 +107,7 @@
         <div class="side-l"></div>
         <div class="content"></div>
         <div class="side-r"></div>
-        <footer></footer>
+        <footer><div class="footer-name">footer</div></footer>
     </div>
 </body>
 </html>
