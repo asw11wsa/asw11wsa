@@ -36,17 +36,38 @@ while($row = mysqli_fetch_array($result)){
 if($GETid){
 ?>
   <a href="upload.php?id=<?=$GETid?>">update</a>
+  <form action="deleteProcess.php" method="post">
+      <input type="hidden" name="id" value="<?=$GETid?>">
+      <input type="submit" value="delete" onclick="button_event()">
+  </form>
 <?php
 }
 ?>
-<p>
     <?php
+    if($GETid){
     $sql2 ="SELECT * FROM `topic` WHERE `id` = '".$GETid."'";
     $result2 = mysqli_query($conn, $sql2);
     while($row2 = mysqli_fetch_array($result2)){
-        echo $row2[description];
+    ?>
+        <h2><?= $row2[title];?></h2>
+        <p><?= $row2[description];?></p>
+    <?php
+    }
+    }else{
+    ?>
+        <h2>HELLO</h2>
+        <p>WELCOME TO MY WEBSITE</p>
+    <?php
     }
     ?>
-</p>
+<script>
+    function button_event() {
+        if(confirm("정말 삭제하시겠습니까??") == true){
+            document.form.submit();
+        }else{
+
+        }
+    };
+</script>
 </body>
 </html>
