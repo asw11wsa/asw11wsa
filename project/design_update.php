@@ -124,7 +124,7 @@ $GETid = $_GET['id'];
             $sql = "SELECT * FROM topic";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)){
-                echo "<li><a href=\"/design.php?id=".$row[id]."\">".$row[title]."</a></li>";
+                echo "<li><a href=\"/project/design.php?id=".$row[id]."\">".$row[title]."</a></li>";
             }
             ?>
         </ol>
