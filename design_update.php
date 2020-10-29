@@ -12,7 +12,7 @@ $GETid = $_GET['id'];
             if(confirm("정말 삭제하시겠습니까??") == true){
                 document.form.submit();
             }else{
-                return;
+                //location.href = "design.php?id="<?//=$GETid?>//;
             }
         };
     </script>
@@ -95,7 +95,7 @@ $GETid = $_GET['id'];
                 /*align-items: center;*/
                 gap: 2px;
                 grid-template-columns: repeat(5, 1fr);
-                grid-auto-rows: 8vh minmax(800px, auto) 8vh;
+                grid-auto-rows: 8vh 1fr 8vh;
                 grid-template-areas:
                     "header header header header header"
                     "side-l content content content side-r"
@@ -111,57 +111,54 @@ $GETid = $_GET['id'];
     </style>
 </head>
 <body>
-    <div class="page">
-        <header>
-            <div class="logo"><a href="">logo</a></div>
-            <div class="menu"><a href="">menu</a></div>
-            <div class="login"><a href="">login</a></div>
-        </header>
-        <div class="side-l">
-            <h1 style="margin-left: 10px;"><a href="study.php">WEB</a></h1>
-            <ol>
-                <?php
-                $sql = "SELECT * FROM topic";
-                $result = mysqli_query($conn, $sql);
-                while($row = mysqli_fetch_array($result)){
-                    echo "<li><a href=\"design.php?id=".$row[id]."\">".$row[title]."</a></li>";
-                }
-                ?>
-            </ol>
-            <a style="margin-left: 10px;" href="design_write.php">write</a>
+<div class="page">
+    <header>
+        <div class="logo"><a href="">logo</a></div>
+        <div class="menu"><a href="">menu</a></div>
+        <div class="login"><a href="">login</a></div>
+    </header>
+    <div class="side-l">
+        <h1 style="margin-left: 10px;"><a href="study.php">WEB</a></h1>
+        <ol>
             <?php
-            if($GETid){
-                ?>
-                <a href="design_update.php?id=<?=$GETid?>">update</a>
-                <form name="form" style="margin-left: 10px;margin-top: 10px;" action="deleteProcess.php" method="post">
-                    <input type="hidden" name="id" value="<?=$GETid?>">
-                    <input type="button" value="delete" onclick="button_event()">
-                </form>
-                <?php
+            $sql = "SELECT * FROM topic";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_array($result)){
+                echo "<li><a href=\"design.php?id=".$row[id]."\">".$row[title]."</a></li>";
             }
             ?>
-        </div>
-        <div class="content">
-            <?php
-            if($GETid){
-                $sql2 ="SELECT * FROM `topic` WHERE `id` = '".$GETid."'";
-                $result2 = mysqli_query($conn, $sql2);
-                while($row2 = mysqli_fetch_array($result2)){
-                    ?>
-                    <h2 style="margin-left: 10px;"><?= $row2[title];?></h2>
-                    <p style="margin-left: 10px;"><?= $row2[description];?></p>
-                    <?php
-                }
-            }else{
-                ?>
-                <h2>HELLO</h2>
-                <p>WELCOME TO MY WEBSITE</p>
-                <?php
-            }
+        </ol>
+        <a style="margin-left: 10px;" href="design_write.php">write</a>
+        <?php
+        if($GETid){
             ?>
-        </div>
-        <div class="side-r"></div>
-        <footer><div class="footer-name">footer</div></footer>
+            <a href="upload.php?id=<?=$GETid?>">update</a>
+            <form style="margin-left: 10px;margin-top: 10px;" action="deleteProcess.php" method="post">
+                <input type="hidden" name="id" value="<?=$GETid?>">
+                <input type="submit" value="delete" onclick="button_event()">
+            </form>
+            <?php
+        }
+        ?>
     </div>
+    <div class="content">
+        <?php
+        $sql2 ="SELECT * FROM `topic` WHERE `id` = '".$GETid."'";
+        $result2 = mysqli_query($conn, $sql2);
+        while($row2 = mysqli_fetch_array($result2)){
+            ?>
+            <form action="upload_process.php" method="post">
+                <input type="hidden" name="id" value="<?= $row2[id]?>">
+                <p><input type="text" name="title" value="<?= $row2[title]?>"/></p>
+                <p><textarea name="description"><?= $row2[description]?></textarea></p>
+                <p><input type="submit"></p>
+            </form>
+            <?php
+        }
+        ?>
+    </div>
+    <div class="side-r"></div>
+    <footer><div class="footer-name">footer</div></footer>
+</div>
 </body>
 </html>

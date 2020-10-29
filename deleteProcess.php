@@ -3,7 +3,7 @@
     $sql = "DELETE FROM `topic` WHERE `id` = '".$_POST['id']."'";
     $result = mysqli_query($conn,$sql);
     if($result){
-        header('Location:study2.php');
+        header('Location:design.php');
     }else{
         echo "delete fail";
     }
