@@ -118,22 +118,22 @@ $GETid = $_GET['id'];
         <div class="login"><a href="">login</a></div>
     </header>
     <div class="side-l">
-        <h1 style="margin-left: 10px;"><a href="project/design.php">WEB</a></h1>
+        <h1 style="margin-left: 10px;"><a href="/project/design.php">WEB</a></h1>
         <ol>
             <?php
             $sql = "SELECT * FROM topic";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)){
-                echo "<li><a href=\"design.php?id=".$row[id]."\">".$row[title]."</a></li>";
+                echo "<li><a href=\"/design.php?id=".$row[id]."\">".$row[title]."</a></li>";
             }
             ?>
         </ol>
-        <a style="margin-left: 10px;" href="project/design_write.php">write</a>
+        <a style="margin-left: 10px;" href="/project/design_write.php">write</a>
         <?php
         if($GETid){
             ?>
-            <a href="project/design_update.php?id=<?=$GETid?>">update</a>
-            <form style="margin-left: 10px;margin-top: 10px;" action="project/deleteProcess.php" method="post">
+            <a href="/project/design_update.php?id=<?=$GETid?>">update</a>
+            <form style="margin-left: 10px;margin-top: 10px;" action="/project/deleteProcess.php" method="post">
                 <input type="hidden" name="id" value="<?=$GETid?>">
                 <input type="submit" value="delete" onclick="button_event()">
             </form>
@@ -147,7 +147,7 @@ $GETid = $_GET['id'];
         $result2 = mysqli_query($conn, $sql2);
         while($row2 = mysqli_fetch_array($result2)){
             ?>
-            <form action="project/upload_process.php" method="post">
+            <form action="/project/upload_process.php" method="post">
                 <input type="hidden" name="id" value="<?= $row2[id]?>">
                 <p><input type="text" name="title" value="<?= $row2[title]?>"/></p>
                 <p><textarea name="description"><?= $row2[description]?></textarea></p>

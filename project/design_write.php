@@ -124,7 +124,7 @@ $GETid = $_GET['id'];
             $sql = "SELECT * FROM topic";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)){
-                echo "<li><a href=\"project/design.php?id=".$row[id]."\">".$row[title]."</a></li>";
+                echo "<li><a href=\"/project/design.php?id=".$row[id]."\">".$row[title]."</a></li>";
             }
             ?>
         </ol>
@@ -132,8 +132,8 @@ $GETid = $_GET['id'];
         <?php
         if($GETid){
             ?>
-            <a href="project/design_update.php?id=<?=$GETid?>">update</a>
-            <form style="margin-left: 10px;margin-top: 10px;" action="project/deleteProcess.php" method="post">
+            <a href="/project/design_update.php?id=<?=$GETid?>">update</a>
+            <form style="margin-left: 10px;margin-top: 10px;" action="/project/deleteProcess.php" method="post">
                 <input type="hidden" name="id" value="<?=$GETid?>">
                 <input type="submit" value="delete" onclick="button_event()">
             </form>
@@ -142,7 +142,7 @@ $GETid = $_GET['id'];
         ?>
     </div>
     <div class="content">
-        <form action="project/write_process.php" method="post">
+        <form action="/project/write_process.php" method="post">
             <p><input type="text" name="title"/></p>
             <p><textarea name="description"></textarea></p>
             <p><input type="submit"></p>
