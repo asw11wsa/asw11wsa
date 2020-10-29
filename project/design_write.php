@@ -1,5 +1,5 @@
 <?php
-require_once 'dbconnect.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
 $GETid = $_GET['id'];
 ?>
 <!DOCTYPE html>

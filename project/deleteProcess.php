@@ -1,5 +1,5 @@
 <?php
-    require_once "dbconnect.php";
+    require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
     $sql = "DELETE FROM `topic` WHERE `id` = '".$_POST['id']."'";
     $result = mysqli_query($conn,$sql);
     if($result){

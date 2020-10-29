@@ -1,5 +1,5 @@
 <?php
-require_once "dbconnect.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
 $sql = "UPDATE `topic` SET `title` = '".$_POST['title']."',
                                `description` = '".htmlspecialchars($_POST['description'])."',
                                `created` = NOW()

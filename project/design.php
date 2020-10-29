@@ -1,5 +1,5 @@
 <?php
-require_once 'dbconnect.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
 $GETid = $_GET['id'];
 ?>
 <!DOCTYPE html>
@@ -124,16 +124,16 @@ $GETid = $_GET['id'];
                 $sql = "SELECT * FROM topic";
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_array($result)){
-                    echo "<li><a href=\"project/design.php?id=".$row[id]."\">".$row[title]."</a></li>";
+                    echo "<li><a href=\"/project/design.php?id=".$row[id]."\">".$row[title]."</a></li>";
                 }
                 ?>
             </ol>
-            <a style="margin-left: 10px;" href="project/design_write.php">write</a>
+            <a style="margin-left: 10px;" href="/project/design_write.php">write</a>
             <?php
             if($GETid){
                 ?>
-                <a href="project/design_update.php?id=<?=$GETid?>">update</a>
-                <form name="form" style="margin-left: 10px;margin-top: 10px;" action="project/deleteProcess.php" method="post">
+                <a href="/project/design_update.php?id=<?=$GETid?>">update</a>
+                <form name="form" style="margin-left: 10px;margin-top: 10px;" action="/project/deleteProcess.php" method="post">
                     <input type="hidden" name="id" value="<?=$GETid?>">
                     <input type="button" value="delete" onclick="button_event()">
                 </form>
