@@ -95,7 +95,7 @@ $GETid = $_GET['id'];
                 /*align-items: center;*/
                 gap: 2px;
                 grid-template-columns: 250px repeat(3,1fr) 250px;
-                grid-auto-rows: 8vh minmax(800px, auto) 8vh;
+                grid-auto-rows: 8vh minmax(1200px, auto) 8vh;
                 grid-template-areas:
                     "header header header header header"
                     "side-l content content content side-r"
