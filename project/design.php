@@ -7,20 +7,13 @@ $list = '';
 while($row = mysqli_fetch_array($result)){
     $list = $list."<li><a href=\"/project/design.php?id={$row[id]}\">{$row[title]}</a></li>";
 }
-$modify = '';
-if($GETid){
-    $modify = $modify."<a href=\"/project/design_update.php?id=<?=$GETid?>\">update</a>
-                <form name=\"form\" class=\"margin-left10 margin-top10\" action=\"/project/deleteProcess.php\" method=\"post\">
-                    <input type=\"hidden\" name=\"id\" value=\"<?=$GETid?>\">
-                    <input type=\"button\" value=\"delete\" onclick=\"button_event()\">
-                </form>";
-}
 $contents = array(
     $title = 'Welcome',
     $description = 'Nice to meet You'
 );
 if($GETid){
-    $sql2 ="SELECT * FROM `topic` WHERE `id` = '".$GETid."'";
+    $filtered_id = mysqli_real_escape_string($conn,$GETid);
+    $sql2 ="SELECT * FROM `topic` WHERE `id` = {$filtered_id}";
     $result2 = mysqli_query($conn, $sql2);
     $row2 = mysqli_fetch_array($result2);
     $contents['title'] = $row2[title];
@@ -152,7 +145,18 @@ if($GETid){
             <h1 class="margin-left10"><a href="/project/design.php">WEB</a></h1>
             <ol><?=$list?></ol>
             <a class="margin-left10" href="/project/design_write.php">write</a>
-            <?=$modify?>
+            <?php
+            if($GETid){
+                ?>
+                <a href="/project/design_update.php?id=<?=$GETid?>">update</a>
+                <form name="form" class="margin-left10 margin-top10" action="/project/deleteProcess.php" method="post">
+                    <input type="hidden" name="id" value="<?=$GETid?>">
+                    <input type="button" value="delete" onclick="button_event()">
+                </form>
+            <?php
+            }
+
+            ?>
         </div>
         <div class="content">
             <h2 class="margin-left10"><?= $contents['title'];?></h2>
