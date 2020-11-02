@@ -10,6 +10,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="26929c35-43d6-48c5-bc29-17172f884d7f" name="tourgosu" url="http://110.10.147.84">
+        <fileTransfer host="110.10.147.84" port="38371" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="38371" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
