@@ -5,19 +5,22 @@ $sql = "SELECT * FROM topic";
 $result = mysqli_query($conn, $sql);
 $list = '';
 while($row = mysqli_fetch_array($result)){
-    $list = $list."<li><a href=\"/project/design.php?id={$row[id]}\">{$row[title]}</a></li>";
+    $escaped_title = htmlspecialchars($row['title']);
+    $list = $list."<li><a href=\"/project/design.php?id={$row[id]}\">{$escaped_title}</a></li>";
 }
 $contents = array(
-    $title = 'Welcome',
-    $description = 'Nice to meet You'
+    'title' => 'Welcome',
+    'description' => 'Nice to meet You'
 );
 if($GETid){
     $filtered_id = mysqli_real_escape_string($conn,$GETid);
     $sql2 ="SELECT * FROM `topic` WHERE `id` = {$filtered_id}";
     $result2 = mysqli_query($conn, $sql2);
     $row2 = mysqli_fetch_array($result2);
-    $contents['title'] = $row2[title];
-    $contents['description'] = $row2[description];
+    $escaped_title2 = htmlspecialchars($row2['title']);
+    $escaped_description2 = htmlspecialchars($row2['description']);
+    $contents['title'] = $escaped_title2;
+    $contents['description'] = $escaped_description2;
 }
 ?>
 <!DOCTYPE html>
