@@ -18,6 +18,14 @@
           <option name="port" value="38371" />
         </fileTransfer>
       </webServer>
+      <webServer id="c08bf251-b402-41dc-9d0d-1561b416e26e" name="tourgosutest" url="http://58.229.240.104">
+        <fileTransfer host="58.229.240.104" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
