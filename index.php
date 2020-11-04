@@ -68,12 +68,15 @@
             list-style: none;
             padding-left:0px;
         }
+        .radius{
+            border-radius: 10px;
+        }
         .page{
             margin: 0 1rem 0 1rem;
             display: grid;
             gap: 0.5rem;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 100px 200px 1fr 200px 100px;
+            grid-template-rows: 100px 1fr 4fr 1fr 100px;
             grid-template-areas:
             "header header header"
             "left_side left_side left_side"
@@ -182,31 +185,31 @@
 </head>
 <body>
     <div class="page">
-        <header class="header">
+        <header class="header radius">
             <div class="logo"><a class="font_20 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
 <!--            <div class="menu"><a href="#a">menu</a></div>-->
 <!--            <div class="login"><a href="#a">login</a></div>-->
         </header>
         <div class="left_side">
-            <div class="left_box">
+            <div class="left_box radius">
                 <ul class="list">
                     <?=$list;?>
                 </ul>
             </div>
         </div>
         <div class="main">
-            <div class="main_box">
+            <div class="main_box radius">
                 <h2 class="margin-left10"><?= $contents['title'];?></h2>
                 <p class="margin-left10"><?= $contents['description'];?></p>
             </div>
         </div>
         <div class="right_side">
-            <div class="right_box">
+            <div class="right_box radius">
                 <a href="write.php">write</a><br>
                 <?= $controller?>
             </div>
         </div>
-        <footer class="footer">
+        <footer class="footer radius">
             <div class="info">Develop by.SION</div>
         </footer>
     </div>
