@@ -13,6 +13,7 @@ $contents = array(
     'description' => 'Nice to meet You'
 );
 if($GETid){
+    //아이디에 관한 제목과 내용 불러 오기
     $filtered_id = mysqli_real_escape_string($conn,$GETid);
     $sql2 ="SELECT * FROM `topic` WHERE `id` = {$filtered_id}";
     $result2 = mysqli_query($conn, $sql2);
@@ -21,6 +22,13 @@ if($GETid){
     $escaped_description2 = htmlspecialchars($row2['description']);
     $contents['title'] = $escaped_title2;
     $contents['description'] = $escaped_description2;
+
+    //아이디가 있으면 수정 삭제 내용이 나오도록 하기
+    $controller = '<a href="/project/design_update.php?id='.$GETid.'">update</a>
+                <form name="form" class="margin-left10 margin-top10" action="/project/deleteProcess.php" method="post">
+                    <input type="hidden" name="id" value="'.$GETid.'">
+                    <input type="button" value="delete" onclick="button_event()">
+                </form>';
 }
 ?>
 <!DOCTYPE html>
@@ -148,18 +156,7 @@ if($GETid){
             <h1 class="margin-left10"><a href="/project/design.php">WEB</a></h1>
             <ol><?=$list?></ol>
             <a class="margin-left10" href="/project/design_write.php">write</a>
-            <?php
-            if($GETid){
-                ?>
-                <a href="/project/design_update.php?id=<?=$GETid?>">update</a>
-                <form name="form" class="margin-left10 margin-top10" action="/project/deleteProcess.php" method="post">
-                    <input type="hidden" name="id" value="<?=$GETid?>">
-                    <input type="button" value="delete" onclick="button_event()">
-                </form>
-            <?php
-            }
-
-            ?>
+            <?=$controller?>
         </div>
         <div class="content">
             <h2 class="margin-left10"><?= $contents['title'];?></h2>
