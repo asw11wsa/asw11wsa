@@ -10,7 +10,7 @@
         $list = $list."<li><a class=\"list_items\" href=\"index.php?id={$row[id]}\">{$escaped_title}</a></li>";
     }
     $contents = array(
-        'title' => 'Welcome',
+        'title' => 'Welcome to SION\'s',
         'description' => 'Nice to meet You'
     );
     if($GETid){
@@ -39,7 +39,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" href="asset/image/logo/logo.png">
+    <title><?=$contents['title']?></title>
     <script>
         function button_event() {
             if(confirm("정말 삭제하시겠습니까??") == true){
