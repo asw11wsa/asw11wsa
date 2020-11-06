@@ -1,11 +1,14 @@
 <meta charset="UTF-8">
 <?php
     require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
-
-    $sql = "INSERT INTO `topic` (`title`, `description`, `created`) VALUES ('{$_POST[title]}', '{$_POST[description]}', NOW());";
+    $filtered = array(
+        'title'=> mysqli_real_escape_string($conn, $_POST['title']),
+        'description' => mysqli_real_escape_string($conn, $_POST['description'])
+    );
+    $sql = "INSERT INTO `topic` (`title`, `description`, `created`) VALUES ('{$filtered[title]}', '{$filtered[description]}', NOW());";
     $result = mysqli_query($conn,$sql);
     if($result){
-        $sql1 = "SELECT * FROM `topic` WHERE `title` = '{$_POST[title]}'";
+        $sql1 = "SELECT * FROM `topic` WHERE `title` = '{$filtered[title]}'";
         $result1 = mysqli_query($conn,$sql1);
         $row = mysqli_fetch_array($result1);
         header("Location:index.php?id={$row[id]}");
