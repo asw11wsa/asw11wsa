@@ -26,7 +26,7 @@
 
         //아이디가 있으면 수정 삭제 내용이 나오도록 하기
         $controller = '<a href="update.php?id='.$GETid.'">update</a>
-                    <form name="form" class="margin-left10 margin-top10" action="deleteProcess.php" method="post">
+                    <form name="form" class="margin-left10 margin-top10" action="delete_process.php" method="post">
                         <input type="hidden" name="id" value="'.$GETid.'">
                         <input type="button" value="delete" onclick="button_event()">
                     </form>';
@@ -50,6 +50,7 @@
             }
         };
     </script>
+    <script defer src="asset/js/index.js"></script>
     <style>
         body{
             margin:0;
@@ -114,7 +115,6 @@
         /*}*/
         .left_side{
             grid-area: left_side;
-            background-color: #fff000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -127,7 +127,6 @@
         }
         .right_side{
             grid-area: right_side;
-            background-color: #fff000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -141,7 +140,6 @@
         }
         .main{
             grid-area: main;
-            background-color: #fff000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -166,6 +164,14 @@
             font-size: 1.2rem;
             font-weight: bold;
         }
+        .dark{
+            background: black;
+            color: white;
+        }
+        .light{
+            background: white;
+            color: black;
+        }
         @media (min-width: 1024px) {
             .page{
                 margin: 0 1rem 0 1rem;
@@ -189,6 +195,7 @@
             <div class="logo"><a class="font_20 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
 <!--            <div class="menu"><a href="#a">menu</a></div>-->
 <!--            <div class="login"><a href="#a">login</a></div>-->
+            <div class="buttons"><input type="button" class="dark" value="dark"><input type="button" class="light" value="light"></div>
         </header>
         <div class="left_side">
             <div class="left_box radius">
