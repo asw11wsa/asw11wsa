@@ -1,21 +1,36 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <script>
+        const item = {
+            inventory : 0,
+            price : 3,
+            salePrice : 2,
+            saleInventory : 1 ,
+        };
+
+        function getLowestPrice(item) {
+            var count = item.inventory;
+            var price = item.price;
+            if (item.salePrice){
+                var count = item.saleInventory;
+                if(count > 0){
+                    price = item.salePrice;
+                }
+            }
+            if(count){
+                return price;
+            }
+            return 0;
+        }
+
+        console.log(getLowestPrice(item));
+    </script>
 </head>
 <body>
-<script>
-    let coworker = ['lee','kim','park','sung','fun'];
 
-    let i = 0;
-    while (i < coworker.length){
-        console.log(coworker[i]);
-        i = i + 1;
-    }
-</script>
 </body>
 </html>

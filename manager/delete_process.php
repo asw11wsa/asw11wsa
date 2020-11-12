@@ -1,5 +1,9 @@
 <meta charset="UTF-8">
 <?php
+    if($_SESSION['id'] == null){
+        header("Location:/manager/login.php");
+    }
+
     require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
 
     $sql = "DELETE FROM `topic` WHERE `id` = {$_POST[id]}";

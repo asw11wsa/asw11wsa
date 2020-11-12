@@ -1,16 +1,17 @@
 <?php
+    session_start();
     require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
 
     $GETid = $_GET['id'];
-    $sql = "SELECT * FROM topic";
+    $sql = "SELECT * FROM topic WHERE active = 1";
     $result = mysqli_query($conn, $sql);
     $list = '';
     while($row = mysqli_fetch_array($result)){
         $escaped_title = htmlspecialchars($row['title']);
-        $list = $list."<li><a class=\"list_items\" href=\"index.php?id={$row[id]}\">{$escaped_title}</a></li>";
+        $list = $list."<li><a class=\"list_items\" style=\"order:{$row[id]}\" href=\"index.php?id={$row[id]}\">{$escaped_title}</a></li>";
     }
     $contents = array(
-        'title' => 'Welcome to SION\'s',
+        'title' => 'Welcome',
         'description' => 'Nice to meet You'
     );
     if($GETid){
@@ -40,17 +41,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="asset/image/logo/logo.png">
-    <title><?=$contents['title']?></title>
-    <script>
-        function button_event() {
-            if(confirm("정말 삭제하시겠습니까??") == true){
-                document.form.submit();
-            }else{
-                return;
-            }
-        };
-    </script>
+    <title><?="SION'S-{$contents['title']}"?></title>
     <script defer src="asset/js/index.js"></script>
+    <script defer src="asset/js/clock.js"></script>
     <style>
         body{
             margin:0;
@@ -77,12 +70,12 @@
             display: grid;
             gap: 0.5rem;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 100px 1fr 4fr 1fr 100px;
+            grid-template-rows: 100px 50px 1fr 4fr 1fr 100px;
             grid-template-areas:
             "header header header"
+            "nav nav nav"
             "left_side left_side left_side"
             "main main main"
-            "right_side right_side right_side"
             "footer footer footer";
         }
         .header{
@@ -98,14 +91,33 @@
             border-bottom: 2px solid #fff000;
             margin-bottom: -2px;
         }
+        .nav{
+            background: white;
+            grid-area: nav;
+        }
+        .js-clock{
+            flex: 1;
+        }
         .logo{
+            flex: 3;
+        }
+        .buttons{
             flex: 1;
         }
         .font_20{
             font-size: 1.25rem;
         }
+        .font_30{
+            font-size: 2rem;
+        }
         .font_bold{
             font-weight: bold;
+        }
+        .list{
+            display: flex;
+        }
+        .list li{
+            flex: 1;
         }
         /*.menu{*/
         /*    flex: 3;*/
@@ -118,38 +130,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #ffffff;
         }
         .left_box{
             width: 100%;
             height: 100%;
             box-sizing: border-box;
-            background-color: #ffffff;
-        }
-        .right_side{
-            grid-area: right_side;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .right_box{
-            width: 100%;
-            height: 100%;
-            padding: 1rem;
-            box-sizing: border-box;
-            background-color: #ffffff;
         }
         .main{
             grid-area: main;
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #ffffff;
         }
         .main_box{
             width: 100%;
             height: 100%;
-            padding: 0 1rem 0 1rem;
+            padding: 2rem 1rem 2rem 1rem;
             box-sizing: border-box;
-            background-color: #ffffff;
         }
         .footer{
             grid-area: footer;
@@ -177,14 +176,15 @@
                 margin: 0 1rem 0 1rem;
                 display: grid;
                 gap: 2px;
-                grid-template-columns: 300px repeat(3, 1fr) 300px;
-                grid-template-rows: 100px repeat(3,minmax(243px,1fr)) 100px;
+                grid-template-columns: 100px 200px repeat(3, 1fr) 200px 100px;
+                grid-template-rows: 100px 50px repeat(3,minmax(243px,1fr)) 100px;
                 grid-template-areas:
-                    "header header header header header"
-                    "left_side main main main right_side"
-                    "left_side main main main right_side"
-                    "left_side main main main right_side"
-                    "footer footer footer footer footer";
+                    "header header header header header header header"
+                    "nav nav nav nav nav nav nav"
+                    ". left_side main main main main ."
+                    ". left_side main main main main ."
+                    ". left_side main main main main ."
+                    "footer footer footer footer footer footer footer";
             }
         }
     </style>
@@ -192,33 +192,41 @@
 <body>
     <div class="page">
         <header class="header radius">
-            <div class="logo"><a class="font_20 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
+            <div class="js-clock">
+                <h3 class="js-title">00:00</h3>
+            </div>
+            <div class="logo"><a class="font_30 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
 <!--            <div class="menu"><a href="#a">menu</a></div>-->
 <!--            <div class="login"><a href="#a">login</a></div>-->
             <div class="buttons"><input type="button" class="dark" value="dark"><input type="button" class="light" value="light"></div>
         </header>
-        <div class="left_side">
-            <div class="left_box radius">
-                <ul class="list">
-                    <?=$list;?>
-                </ul>
+        <div class="nav radius">
+            <ul class="list">
+                <?=$list;?>
+            </ul>
+        </div>
+        <div class="left_side radius">
+            <div class="left_box">
             </div>
         </div>
-        <div class="main">
-            <div class="main_box radius">
+        <div class="main radius">
+            <div class="main_box">
                 <h2 class="margin-left10"><?= $contents['title'];?></h2>
                 <p class="margin-left10"><?= $contents['description'];?></p>
-            </div>
-        </div>
-        <div class="right_side">
-            <div class="right_box radius">
-                <a href="write.php">write</a><br>
-                <?= $controller?>
             </div>
         </div>
         <footer class="footer radius">
             <div class="info">Develop by.SION</div>
         </footer>
     </div>
+    <script>
+        function button_event() {
+            if(confirm("정말 삭제하시겠습니까??") == true){
+                document.form.submit();
+            }else{
+                return;
+            }
+        };
+    </script>
 </body>
 </html>
