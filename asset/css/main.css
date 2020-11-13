@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+html{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+}
+body{
+    overflow-x: hidden; /*가로 스크로를 안생기게 하기 위해서 설정을 하고 들어간다*/
+    color:rgb(29,29,31);
+    letter-spacing: -0.05em;
+    background: white;
+}
+p{
+    line-height: 1.6;
+}
+a{
+    color:rgb(29,29,31);
+    text-decoration: none;
+}
+.global-nav{
+    height: 44px;
+}
+.local-nav{
+    height: 52px;
+    border-bottom: 1px solid #bbb;
+}
+.global-nav-links,
+.local-nav-links{
+    max-width: 1000px; /*고정된 값이 아니라 max-width를 줌으로써 줄어들때도 자연스럽도록 해준다*/
+    margin: 0 auto;
+    display: flex;
+    height: 100%; /*부모가 44px고정이니깐 안에는 100%를 주면 안에는 자연적으로 44px에 맞게 된다*/
+    align-items: center; /*수직방향도 가운데 오도록 정렬 하지만 높이를 자세히 봐야 한다*/
+}
+.global-nav-links{
+    justify-content: space-between;
+}
+.product-name{
+    margin-right: auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.local-nav-links a:not(.product-name) { /* :not() 안에 들어간것은 제외하고 나머지에 속성을 넣는다*/
+    margin-left: 2em;
+    font-size: 0.8rem;
+}
