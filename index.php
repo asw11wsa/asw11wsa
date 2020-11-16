@@ -42,8 +42,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="asset/image/logo/logo.png">
     <title><?="SION'S-{$contents['title']}"?></title>
-    <script defer src="asset/js/index.js"></script>
-    <script defer src="asset/js/clock.js"></script>
     <style>
         body{
             margin:0;
@@ -198,7 +196,7 @@
             <div class="logo"><a class="font_30 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
 <!--            <div class="menu"><a href="#a">menu</a></div>-->
 <!--            <div class="login"><a href="#a">login</a></div>-->
-            <div class="buttons"><input type="button" class="dark" value="dark"><input type="button" class="light" value="light"></div>
+            <div class="buttons"><input type="button" id="dark" value="dark" onclick="nightDayHandler(this)"/></div>
         </header>
         <div class="nav radius">
             <ul class="list">
@@ -228,5 +226,7 @@
             }
         };
     </script>
+    <script defer src="asset/js/index.js"></script>
+    <script defer src="asset/js/clock.js"></script>
 </body>
 </html>

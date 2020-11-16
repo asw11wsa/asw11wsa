@@ -1,7 +1,5 @@
 const clockTitle = document.querySelector("h3.js-title");
 
-console.log(clockTitle);
-
 function getTime() {
     const date = new Date();
     const minutes = date.getMinutes();
