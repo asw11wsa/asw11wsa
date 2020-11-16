@@ -116,6 +116,15 @@
         .main{
             grid-area: main;
         }
+        .btn{
+            background-color: rgba(0,0,0,1);
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+        .btn:hover{
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +147,12 @@
         <li><a href="/manager/makeList.php">리스트 만들기</a></li>
         <li><a href="/manager/write.php">글쓰기</a></li>
         <li><a href="/manager/update.php?id=<?=$GETid?>">수정하기</a></li>
-        <li><a href="/manager/delete.php">삭제하기</a></li>
+        <li>
+            <form name="form" action="/manager/delete_process.php" method="post">
+                <input type="hidden" name="id" value="<?=$GETid?>">
+                <input class="btn" type="button" value="삭제하기" onclick="delete_check();">
+            </form>
+        </li>
         </ol>
     </div>
     <div class="main">
@@ -146,5 +160,14 @@
         <p class="margin-left10"><?= $contents['description'];?></p>
     </div>
 </div>
+<script>
+    function delete_check() {
+        if(confirm("정말 삭제하시겠습니까?") == true){
+            document.form.submit();
+        }else{
+            return;
+        }
+    }
+</script>
 </body>
 </html>

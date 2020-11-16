@@ -1,5 +1,6 @@
 <meta charset="UTF-8">
 <?php
+    session_start();
     require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
     $filtered = array(
         'title'=> mysqli_real_escape_string($conn, $_POST['title']),

@@ -1,5 +1,6 @@
 <meta charset="UTF-8">
 <?php
+    session_start();
     if($_SESSION['id'] == null){
         header("Location:/manager/login.php");
     }
