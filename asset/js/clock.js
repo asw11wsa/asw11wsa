@@ -1,4 +1,5 @@
-const clockTitle = document.querySelector("h3.js-title");
+const clockTitle = document.querySelector("h1.js-title");
+const smallClockTitle = document.querySelector("h3.js-title");
 
 function getTime() {
     const date = new Date();
@@ -6,6 +7,7 @@ function getTime() {
     const hours = date.getHours();
     const seconds = date.getSeconds();
     clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+    // smallClockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 }
 
 function init() {

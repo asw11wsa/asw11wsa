@@ -8,7 +8,7 @@ const USER_LS = "currentUser",
 function handleSubmit(event) {
     const currentValue = input.value;
     event.preventDefault();
-    localStorage.setItem('currentUser',name);
+    localStorage.setItem(USER_LS,currentValue);
     loadName();
 }
 

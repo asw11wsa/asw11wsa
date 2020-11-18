@@ -227,6 +227,6 @@
         };
     </script>
     <script defer src="asset/js/index.js"></script>
-    <script defer src="asset/js/clock.js"></script>
+    <script defer src="asset/js/clock2.js"></script>
 </body>
 </html>

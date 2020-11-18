@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="/asset/css/momentum.css">
 </head>
 <body>
+<section class="info">
     <div class="js-clock">
-        <h3 class="js-title">
+        <h1 class="js-title" style="font-size: 4rem;">
             00:00
-        </h3>
+        </h1>
     </div>
     <form class="js-form form">
         <input type="text" placeholder="What is your name">
@@ -23,9 +24,11 @@
     </form>
     <ul class="js-toDoList">
     </ul>
-
+</section>
 <script src="/asset/js/clock.js"></script>
 <script src="/asset/js/greeting.js"></script>
 <script src="/asset/js/todo.js"></script>
+<script src="/asset/js/bg.js"></script>
+<script src="/asset/js/weather.js"></script>
 </body>
 </html>

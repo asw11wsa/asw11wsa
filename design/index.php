@@ -44,7 +44,7 @@
             </div>
         </section>
         <section class="scroll-section" id="scroll-section-1">
-            <p>
+            <p class="description">
                 <strong>보통 스크롤 영역</strong>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, at consequatur consequuntur culpa deserunt distinctio dolore ducimus ea enim excepturi fugiat illum ipsa iste itaque odio provident quae quam saepe temporibus ut velit veritatis voluptatem, voluptates voluptatibus voluptatum! Cum eum eveniet pariatur. Ad aliquam architecto blanditiis commodi consequatur culpa delectus dignissimos distinctio dolorum earum eius eos error esse est facere harum maxime nam neque nobis, numquam obcaecati perspiciatis placeat praesentium quaerat quidem quos recusandae reiciendis saepe sequi sit sunt veniam voluptates voluptatibus! Aliquam at atque corporis deleniti distinctio ex, hic impedit, iure maxime natus nostrum nulla praesentium, quam quasi quo temporibus tenetur voluptatibus! Ab ad aliquid amet animi asperiores aut, beatae commodi delectus deserunt enim et expedita ipsam ipsum magnam molestias nisi non nulla perferendis placeat praesentium quas sed sint veniam! Amet atque dolores eaque eius est expedita explicabo fugit in, iste laborum minima natus nesciunt nobis nulla pariatur qui ratione veniam, voluptatem. Blanditiis nisi obcaecati odit quis. Accusamus consectetur debitis doloremque, eum fuga iure iusto minima nesciunt nulla, numquam omnis perspiciatis quam ratione sint soluta tempore, voluptatum. Aliquam, asperiores aspernatur, cum cumque dolorem hic molestiae molestias nostrum optio quibusdam reiciendis repellendus! At autem id quidem reprehenderit veniam voluptatem. Nobis!
             </p>
@@ -62,7 +62,7 @@
                 </p>
                 <div class="pin"></div>
             </div>
-            <div class="sticky-elem main-message">
+            <div class="sticky-elem desc-message">
                 <p>
                     디자인 앤 퀄리티 오브 스웨덴, <br> 메이드 인 차이나
                 </p>
