@@ -22,7 +22,7 @@
         </nav>
         <nav class="local-nav">
             <div class="local-nav-links">
-                <a href="" class="product-name">AirMug Pro</a>
+                <a href="#" class="product-name">AirMug Pro</a>
                 <a href="#">개요</a>
                 <a href="#">제품사양</a>
                 <a href="#">구입하기</a>
@@ -81,5 +81,6 @@
         </section>
         <footer class="footer">2020 By SION</footer>
     </div>
+    <script src="/asset/js/main.js"></script>
 </body>
 </html>
