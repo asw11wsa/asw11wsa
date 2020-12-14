@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function insert(){
+            let name = insertform.name.value;
+            opener.insName.uname.value = name;
+            self.close();
+        }
+    </script>
+</head>
+<body>
+    <form name="insertform">
+        이름을 입력하세요.<br>
+        <input type="text" name="name">
+        <input type="button" value="입력" onclick="insert();">
+    </form>
+</body>
+</html>

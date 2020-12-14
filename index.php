@@ -47,7 +47,7 @@
             margin:0;
             padding: 0;
             text-align: center;
-            background-color: #fff000;
+            background-color: #9AB7B8;
         }
         a{
             text-decoration: none;
@@ -85,12 +85,12 @@
             align-content: center;
             text-align: center;
             align-items: center;
-            background-color: #ffffff;
-            border-bottom: 2px solid #fff000;
+            background-color: #EBEBF1;
+            border-bottom: 2px solid #9AB7B8;
             margin-bottom: -2px;
         }
         .nav{
-            background: white;
+            background: #EBEBF1;
             grid-area: nav;
         }
         .js-clock{
@@ -112,6 +112,7 @@
             font-weight: bold;
         }
         .list{
+            margin: 15px 0 15px 0;
             display: flex;
         }
         .list li{
@@ -128,7 +129,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ffffff;
+            background-color: #EBEBF1;
         }
         .left_box{
             width: 100%;
@@ -140,12 +141,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ffffff;
+            background-color: #EBEBF1;
         }
         .main_box{
             width: 100%;
             height: 100%;
-            padding: 2rem 1rem 2rem 1rem;
+            padding: 2rem 2rem 2rem 2rem;
             box-sizing: border-box;
         }
         .footer{
@@ -155,7 +156,7 @@
             align-content: center;
             text-align: center;
             align-items: center;
-            background-color: #ffffff;
+            background-color: #EBEBF1;
         }
         .info{
             font-size: 1.2rem;
@@ -177,12 +178,28 @@
                 grid-template-columns: 100px 200px repeat(3, 1fr) 200px 100px;
                 grid-template-rows: 100px 50px repeat(3,minmax(243px,1fr)) 100px;
                 grid-template-areas:
-                    "header header header header header header header"
-                    "nav nav nav nav nav nav nav"
+                    ". header header header header header ."
+                    ". nav nav nav nav nav ."
                     ". left_side main main main main ."
                     ". left_side main main main main ."
                     ". left_side main main main main ."
-                    "footer footer footer footer footer footer footer";
+                    ". footer footer footer footer footer .";
+            }
+            .list{
+                margin: 0;
+                height: 100%;
+            }
+            .list li{
+                height: 100%;
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .list li a{
+                display: block;
+                height: 50%;
+                width: 30%;
             }
         }
     </style>
@@ -205,6 +222,13 @@
         </div>
         <div class="left_side radius">
             <div class="left_box">
+                <ul style="margin-top: 30px">
+                    <li>basic</li>
+                    <li>speed</li>
+                    <li>hard</li>
+                    <li>easy</li>
+                    <li>new</li>
+                </ul>
             </div>
         </div>
         <div class="main radius">

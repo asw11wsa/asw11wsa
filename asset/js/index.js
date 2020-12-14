@@ -2,15 +2,15 @@ const color_btn = document.querySelector('#dark');
 const localColorDate = localStorage.getItem('color');
 
 function dark(){
-    document.body.style.backgroundColor = "black";
-    document.querySelector(".header").style.borderBottom = "2px solid #000";
+    document.body.style.backgroundColor = "#303232";
+    document.querySelector(".header").style.borderBottom = "2px solid #303232";
     localStorage.setItem('color','dark');
     color_btn.value = 'day';
 }
 
 function light() {
-    document.body.style.backgroundColor = "#fff000";
-    document.querySelector(".header").style.borderBottom = "2px solid #fff000";
+    document.body.style.backgroundColor = "#9AB7B8";
+    document.querySelector(".header").style.borderBottom = "2px solid #9AB7B8";
     localStorage.setItem('color','day');
     color_btn.value = 'dark';
 }
