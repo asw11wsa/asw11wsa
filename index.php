@@ -1,30 +1,8 @@
 <?php
-    session_start();
-    require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
+session_start();
+require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
 
-    $GETid = $_GET['id'];
-    $sql = "SELECT * FROM topic WHERE active = 1";
-    $result = mysqli_query($conn, $sql);
-    $list = '';
-    while($row = mysqli_fetch_array($result)){
-        $escaped_title = htmlspecialchars($row['title']);
-        $list = $list."<li><a class=\"list_items\" style=\"order:{$row[id]}\" href=\"index.php?id={$row[id]}\">{$escaped_title}</a></li>";
-    }
-    $contents = array(
-        'title' => 'Welcome',
-        'description' => 'Nice to meet You'
-    );
-    if($GETid){
-        //아이디에 관한 제목과 내용 불러 오기
-        $filtered_id = mysqli_real_escape_string($conn,$GETid);
-        $sql2 ="SELECT * FROM `topic` WHERE `id` = {$filtered_id}";
-        $result2 = mysqli_query($conn, $sql2);
-        $row2 = mysqli_fetch_array($result2);
-        $escaped_title2 = htmlspecialchars($row2['title']);
-        $escaped_description2 = htmlspecialchars($row2['description']);
-        $contents['title'] = $escaped_title2;
-        $contents['description'] = $escaped_description2;
-    }
+$GETid = $_GET['id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -63,11 +41,11 @@
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: 100px 50px 1fr 4fr 1fr 100px;
             grid-template-areas:
-            "header header header"
-            "nav nav nav"
-            "left_side left_side left_side"
-            "main main main"
-            "footer footer footer";
+                "header header header"
+                "nav nav nav"
+                "left_side left_side left_side"
+                "main main main"
+                "footer footer footer";
         }
         .header{
             grid-area: header;
@@ -198,52 +176,62 @@
     </style>
 </head>
 <body>
-    <div class="page">
-        <header class="header radius">
-            <div class="js-clock">
-                <h3 class="js-title">00:00</h3>
-            </div>
-            <div class="logo"><a class="font_30 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
-<!--            <div class="menu"><a href="#a">menu</a></div>-->
-<!--            <div class="login"><a href="#a">login</a></div>-->
-            <div class="buttons"><input type="button" id="dark" value="dark" onclick="nightDayHandler(this)"/></div>
-        </header>
-        <div class="nav radius">
-            <ul class="list">
-                <?=$list;?>
+<div class="page">
+    <header class="header radius">
+        <div class="js-clock">
+            <h3 class="js-title">00:00</h3>
+        </div>
+        <div class="logo"><a class="font_30 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
+        <!--            <div class="menu"><a href="#a">menu</a></div>-->
+        <!--            <div class="login"><a href="#a">login</a></div>-->
+        <div class="buttons"><input type="button" id="dark" value="dark" onclick="nightDayHandler(this)"/></div>
+    </header>
+    <div class="nav radius">
+        <ul class="list">
+            <?php
+            $topics2 = new ViewTopic();
+            $topics2->showAllTopicNav();
+            ?>
+        </ul>
+    </div>
+    <div class="left_side radius">
+        <div class="left_box">
+            <ul style="margin-top: 30px">
+                <li>basic</li>
+                <li>speed</li>
+                <li>hard</li>
+                <li>easy</li>
+                <li>new</li>
             </ul>
         </div>
-        <div class="left_side radius">
-            <div class="left_box">
-                <ul style="margin-top: 30px">
-                    <li>basic</li>
-                    <li>speed</li>
-                    <li>hard</li>
-                    <li>easy</li>
-                    <li>new</li>
-                </ul>
-            </div>
-        </div>
-        <div class="main radius">
-            <div class="main_box">
-                <h2 class="margin-left10"><?= $contents['title'];?></h2>
-                <p class="margin-left10"><?= $contents['description'];?></p>
-            </div>
-        </div>
-        <footer class="footer radius">
-            <div class="info">Develop by.SION</div>
-        </footer>
     </div>
-    <script>
-        function button_event() {
-            if(confirm("정말 삭제하시겠습니까??") == true){
-                document.form.submit();
+    <div class="main radius">
+        <div class="main_box">
+            <?php
+            if($GETid){
+                $constant = new ViewTopic();
+                $constant->showTopicFromId($GETid);
             }else{
-                return;
+                echo "<h2 class=\"margin-left10\">welcome to sion's page</h2>";
+                echo "<p class=\"margin-left10\">enjoy</p>";
             }
-        };
-    </script>
-    <script defer src="asset/js/index.js"></script>
-    <script defer src="asset/js/clock2.js"></script>
+            ?>
+        </div>
+    </div>
+    <footer class="footer radius">
+        <div class="info">Develop by.SION</div>
+    </footer>
+</div>
+<script>
+    function button_event() {
+        if(confirm("정말 삭제하시겠습니까??") == true){
+            document.form.submit();
+        }else{
+            return;
+        }
+    };
+</script>
+<script defer src="asset/js/index.js"></script>
+<script defer src="asset/js/clock2.js"></script>
 </body>
 </html>
