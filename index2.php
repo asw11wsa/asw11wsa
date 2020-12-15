@@ -39,7 +39,7 @@ $GETid = $_GET['id'];
             display: grid;
             gap: 0.5rem;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 100px 50px 1fr 4fr 1fr 100px;
+            grid-template-rows: 100px 50px minmax(10px,1fr) 4fr 100px;
             grid-template-areas:
                 "header header header"
                 "nav nav nav"
@@ -196,12 +196,9 @@ $GETid = $_GET['id'];
     </div>
     <div class="left_side radius">
         <div class="left_box">
-            <ul style="margin-top: 30px">
+            <ul>
                 <li>basic</li>
                 <li>speed</li>
-                <li>hard</li>
-                <li>easy</li>
-                <li>new</li>
             </ul>
         </div>
     </div>

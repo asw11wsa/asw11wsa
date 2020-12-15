@@ -39,7 +39,7 @@ $GETid = $_GET['id'];
             display: grid;
             gap: 0.5rem;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 100px 50px 1fr 4fr 1fr 100px;
+            grid-template-rows: 100px 50px minmax(10px,1fr) 4fr 100px;
             grid-template-areas:
                 "header header header"
                 "nav nav nav"
@@ -67,17 +67,17 @@ $GETid = $_GET['id'];
         .js-clock{
             flex: 1;
         }
+        .js-clock .js-title{
+            font-size: 1rem;
+        }
         .logo{
             flex: 3;
         }
         .buttons{
             flex: 1;
         }
-        .font_20{
+        .logo_font{
             font-size: 1.25rem;
-        }
-        .font_30{
-            font-size: 2rem;
         }
         .font_bold{
             font-weight: bold;
@@ -156,6 +156,12 @@ $GETid = $_GET['id'];
                     ". left_side main main main main ."
                     ". footer footer footer footer footer .";
             }
+            .js-clock .js-title{
+                font-size: 1.25rem;
+            }
+            .logo_font{
+                font-size: 2rem;
+            }
             .list{
                 margin: 0;
                 height: 100%;
@@ -181,7 +187,7 @@ $GETid = $_GET['id'];
         <div class="js-clock">
             <h3 class="js-title">00:00</h3>
         </div>
-        <div class="logo"><a class="font_30 font_bold" href="index.php">SION'S PLAYGROUND</a></div>
+        <div class="logo"><a class="logo_font font_bold" href="index.php">SION'S PLAYGROUND</a></div>
         <!--            <div class="menu"><a href="#a">menu</a></div>-->
         <!--            <div class="login"><a href="#a">login</a></div>-->
         <div class="buttons"><input type="button" id="dark" value="dark" onclick="nightDayHandler(this)"/></div>
