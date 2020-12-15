@@ -24,13 +24,6 @@
         $escaped_description2 = htmlspecialchars($row2['description']);
         $contents['title'] = $escaped_title2;
         $contents['description'] = $escaped_description2;
-
-        //아이디가 있으면 수정 삭제 내용이 나오도록 하기
-        $controller = '<a href="update.php?id='.$GETid.'">update</a>
-                    <form name="form" class="margin-left10 margin-top10" action="delete_process.php" method="post">
-                        <input type="hidden" name="id" value="'.$GETid.'">
-                        <input type="button" value="delete" onclick="button_event()">
-                    </form>';
     }
 ?>
 <!doctype html>
