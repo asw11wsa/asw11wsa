@@ -30,7 +30,7 @@ $GETid = $_GET['id'];
         <ul class="list">
             <?php
             $topics2 = new ViewTopic();
-            $topics2->showAllTopicNav();
+            $topics2->showAllTopicNav_main();
             ?>
         </ul>
     </div>

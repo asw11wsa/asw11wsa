@@ -9,11 +9,19 @@ class ViewTopic extends Topic
             echo $data['description']."<br>";
         }
     }
-    public function showAllTopicNav(){
+    public function showAllTopicNav_main(){
         $datas = $this->getAllUsersActive();
         foreach ($datas as $data){
             $escaped_title = htmlspecialchars($data['title']);
             echo "<li><a class=\"list_items\" style=\"order:{$data['id']}\" href=\"index.php?id={$data['id']}\">{$escaped_title}</a></li>";
+        }
+    }
+
+    public function showAllTopicNav_manager(){
+        $datas = $this->getAllUsersActive();
+        foreach ($datas as $data){
+            $escaped_title = htmlspecialchars($data['title']);
+            echo "<li><a class=\"items\" style=\"order:{$data['id']}\" href=\"index.php?id={$data['id']}\">{$escaped_title}</a></li>";
         }
     }
 
