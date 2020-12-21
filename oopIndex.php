@@ -1,5 +1,5 @@
 <?php
- include_once "include/person.inc.php";
+ include_once "include/person.class.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,10 +12,8 @@
 </head>
 <body>
 <?php
-
-$pet01 = new Person();
-echo $pet01->owner();
-
+$person1 = new Person("siu","black",25);
+echo $person1->getDA();
 ?>
 </body>
 </html>
