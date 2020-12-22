@@ -1,5 +1,5 @@
 <?php
- include 'include/autoloader.inc.php';
+ include 'include/class-autoload.inc.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,12 +13,13 @@
 <body>
 <?php
 $person1 = new Person("siu",25);
-echo $person1->getPerson();
 
-echo "<br>";
-
-$street = new House("youngtong","nam");
-echo $street->getAddress();
+try {
+    $person1->setName(2);
+    echo $person1->getName();
+}catch (TypeError $e){
+    echo $e->getMessage();
+}
 ?>
 </body>
 </html>
