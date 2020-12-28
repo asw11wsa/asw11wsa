@@ -3,6 +3,10 @@ session_start();
 require_once $_SERVER['DOCUMENT_ROOT']."/dbconnect.php";
 
 $GETid = $_GET['id'];
+
+$db = new Database();
+echo $db->connCheck();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,7 +17,7 @@ $GETid = $_GET['id'];
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="asset/image/logo/logo.png">
     <link rel="stylesheet" href="asset/css/index.css">
-    <title><?="SION'S-{$contents['title']}"?></title>
+<!--    <title>--><?//="SION'S-{$contents['title']}"?><!--</title>-->
 </head>
 <body>
 <div class="page">

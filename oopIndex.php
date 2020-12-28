@@ -11,15 +11,17 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-$person1 = new Person("siu",25);
-
-try {
-    $person1->setName(2);
-    echo $person1->getName();
-}catch (TypeError $e){
-    echo $e->getMessage();
-}
-?>
+<form action="include/calc.inc.php" method="post">
+    <p>My own calculator!</p>
+    <input type="number" name="num1" placeholder="First number">
+    <select name="operator">
+        <option value="add">Addition</option>
+        <option value="sub">Subtraction</option>
+        <option value="div">Division</option>
+        <option value="mul">Multiplication</option>
+    </select>
+    <input type="number" name="num2" placeholder="Second number">
+    <button type="submit" name="submit">Calculate</button>
+</form>
 </body>
 </html>

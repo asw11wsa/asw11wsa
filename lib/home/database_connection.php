@@ -10,11 +10,19 @@ class Database
     protected function connect(){
         $this->servername = "localhost";
         $this->username = "asw11wsa";
-        $this->password = "tjdghk5328";
+        $this->password = "Siu2034!";
         $this->dbname = "asw11wsa";
 
         $conn = new mysqli($this->servername,$this->username,$this->password,$this->dbname);
         return $conn;
+    }
+
+    public function connCheck(){
+        if($conn = new mysqli($this->servername,$this->username,$this->password,$this->dbname)){
+            return "connected";
+        }else{
+            return "unconnected";
+        }
     }
 }
 ?>
